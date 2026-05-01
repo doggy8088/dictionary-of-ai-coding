@@ -1,22 +1,22 @@
-# AI Coding Dictionary
+# AI 編碼詞彙字典
 
-**AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
+**AI 編碼常常讓人感覺是專家的專利**。一堆沒有解釋的術語。莫名其妙的失敗。帳單金額與實際工作量對不上。
 
-It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
+其實沒那麼難。很多困惑都是人為製造的：**有一整個靠風投支撐的生態圈，從讓這些東西難以理解中獲益**。
 
-The basic terms of engagement are learnable in an afternoon. Once you have them, the whole thing stops feeling like guesswork.
+AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，整件事就不再像是猜謎遊戲。
 
-Why does context degrade? Why is the bill so high? Why does the same prompt behave differently from one day to the next?
+為什麼脈絡（Context）會衰退？為什麼帳單這麼高？為什麼同一個提示詞，今天和昨天的行為不一樣？
 
-Each has a clean answer, once someone tells you the words to use.
+每個問題都有清晰的答案，只要有人告訴你該用什麼詞。
 
-That's what this dictionary is for. **The vocabulary of AI coding, translated into plain English**.
+這就是這本字典的用途。**AI 編碼的詞彙，用清晰的語言翻譯給你**。
 
-**Want more than the vocabulary?** Join 62,000+ developers at **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)** for my latest skills, thinking on AI engineering, and the resources that'll keep you ahead of the curve.
+**想要的不只是詞彙？** 加入 62,000+ 位開發者，訂閱 **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)**，獲取我最新的技能、AI 工程思考，以及讓你保持領先的資源。
 
 ---
 
-## Table of contents
+## 目錄
 
 <!-- TOC -->
 

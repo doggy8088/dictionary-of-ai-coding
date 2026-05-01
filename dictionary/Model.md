@@ -1,7 +1,7 @@
-The [parameters](./Parameters.md). [Stateless](./Stateless.md) — does [next-token prediction](./Next-token%20prediction.md) and nothing else. "Claude Opus 4.7" and "GPT-5" are models. On its own a model can't do anything agentic; it has to be [harnessed](./Harness.md).
+即[參數](./Parameters.md)（Parameters）本身。[無狀態](./Stateless.md)（Stateless）——執行[下一個語元預測](./Next-token%20prediction.md)，僅此而已。「Claude Opus 4.7」和「GPT-5」都是模型。模型本身無法做任何代理人該做的事；它必須被[框架化](./Harness.md)（Harnessed）。
 
-*Usage:*
+*使用範例：*
 
-"Should we switch the model from Sonnet to Opus for the planning step?"
+「規劃步驟要不要把模型從 Sonnet 換成 Opus？」
 
-"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](./System%20prompt.md) and [tools](./Tool.md) are wrong."
+「試試看吧——但這個任務大部分工作是框架在做。如果[系統提示詞](./System%20prompt.md)和[工具](./Tool.md)設定不對，換模型也沒用。」

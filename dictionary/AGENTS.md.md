@@ -1,9 +1,9 @@
-A file in the [environment](./Environment.md) that the [harness](./Harness.md) loads into the [context window](./Context%20window.md) at [session](./Session.md) start — the project's standing brief to the [agent](./Agent.md). Cross-harness convention.
+一個位於[環境](./Environment.md)（Environment）中、由[框架](./Harness.md)（Harness）在[工作階段](./Session.md)（Session）開始時載入[上下文視窗](./Context%20window.md)（Context Window）的檔案——這是專案給[代理人](./Agent.md)的常駐任務說明書。各家框架通用的慣例。
 
-*Avoid:* using AGENTS.md for content that should be [progressively disclosed](./Progressive%20disclosure.md) — anything in it pays a [token](./Token.md) cost every [turn](./Turn.md).
+*避免使用：* 將 AGENTS.md 用於應[漸進式揭露](./Progressive%20disclosure.md)（Progressive Disclosure）的內容——放在 AGENTS.md 裡的任何內容，每個[對話輪次](./Turn.md)（Turn）都要付出[語元](./Token.md)（Token）代價。
 
-*Usage:*
+*使用範例：*
 
-"Why is every session starting with 4k tokens already burned?"
+「為什麼每個工作階段一開始就已燒掉 4000 個語元了？」
 
-"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](./Skill.md)."
+「看看 AGENTS.md——有人把整份樣式指南直接貼在裡面，而不是把它放在[技能](./Skill.md)（Skill）後面按需載入。」

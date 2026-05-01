@@ -1,7 +1,7 @@
-A [handoff artifact](./Handoff%20artifact.md) scoping one [session](./Session.md) of work. Stands alone, or hangs off a [spec](./Spec.md) as one of its children. Tickets can block or be blocked by sibling tickets, so the order of work falls out of their dependency graph rather than a linear plan.
+一份劃定單一[工作階段](./Session.md)工作範圍的[交接文件](./Handoff%20artifact.md)（Handoff Artifact）。可以獨立存在，也可以作為[規格書](./Spec.md)（Spec）的子項之一。任務單可以阻塞或被同層任務單阻塞，因此工作順序從它們的相依關係圖中自然浮現，而非依賴線性計劃。
 
-*Usage:*
+*使用範例：*
 
-"Where do I start on the migration spec?"
+「這次遷移的規格書要從哪裡開始？」
 
-"Look at the ticket graph — the schema change blocks the backfill, the backfill blocks the API switch. Pick a leaf and run a session on it."
+「看任務單圖——Schema 變更阻塞回填，回填阻塞 API 切換。挑一個沒有前置依賴的葉節點，然後跑一個工作階段處理它。」

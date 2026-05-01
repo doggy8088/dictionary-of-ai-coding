@@ -1,9 +1,9 @@
-The [provider](./Model%20provider.md)-side store that lets consecutive [model provider requests](./Model%20provider%20request.md) skip re-processing a shared prefix. When the start of a request matches the start of a recent one — same [system prompt](./System%20prompt.md), same history up to some point — the provider reuses its prior work and bills those [tokens](./Token.md) as [cache tokens](./Cache%20tokens.md) at a much lower rate.
+[供應商](./Model%20provider.md)端的快取儲存區，讓連續的[模型供應商請求](./Model%20provider%20request.md)能夠跳過重新處理共享前綴的步驟。當一個請求的開頭與近期某個請求的開頭吻合——相同的[系統提示詞](./System%20prompt.md)、相同的歷史記錄到某個時間點——供應商就重複使用先前的運算結果，並以[快取語元](./Cache%20tokens.md)（Cache Tokens）的折扣費率計費。
 
-Anything that changes the prefix (reordering files, rewriting the system prompt mid-[session](./Session.md), injecting a timestamp near the top) invalidates the cache from that point on, and the rest of the request bills at full [input token](./Input%20tokens.md) rate.
+任何改變前綴的操作（重新排列檔案順序、在[工作階段](./Session.md)中途改寫系統提示詞、在頂部注入時間戳記）都會從該點起使快取失效，之後的請求以全額[輸入語元](./Input%20tokens.md)費率計費。
 
-_Usage:_
+*使用範例：*
 
-"Why did the bill spike halfway through the session?"
+「為什麼帳單在工作階段中途突然飆高？」
 
-"[Harness](./Harness.md) started injecting the current time into the system prompt every [turn](./Turn.md). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
+「[框架](./Harness.md)開始在每個[對話輪次](./Turn.md)把當前時間注入系統提示詞。前綴快取在第一個改變的語元處就失效了，所以此後每次請求都以全額費率計費。」

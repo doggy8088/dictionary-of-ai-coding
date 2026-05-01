@@ -1,11 +1,11 @@
-Facts the [agent](./Agent.md) can read directly from the [context](./Context.md) right now — the user's task, files the agent has read in, [tool results](./Tool%20result.md), [AGENTS.md](./AGENTS.md.md) content loaded at [session](./Session.md) start. Counterpart to [parametric knowledge](./Parametric%20knowledge.md): parametric is *recalled* from the parameters; contextual is *read* from the [window](./Context%20window.md). [Hallucinations](./Hallucination.md) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
+[代理人](./Agent.md)可以直接從當前[脈絡](./Context.md)中讀取的事實——使用者的任務指令、代理人已讀入的檔案、[工具結果](./Tool%20result.md)（Tool Results）、在[工作階段](./Session.md)開始時載入的 [AGENTS.md](./AGENTS.md.md) 內容。與[參數化知識](./Parametric%20knowledge.md)（Parametric Knowledge）相對：參數化知識是從參數中*召喚*出來的；情境知識是從[視窗](./Context%20window.md)中直接*讀取*的。當代理人從情境知識出發時，[幻覺](./Hallucination.md)（Hallucination）發生的機率大幅降低——答案就在眼前，無需從模糊的記憶中挖掘。
 
-*Reach for this term* only when contrasting with parametric knowledge; otherwise just say **context**.
+*只有在*與參數化知識對比時才使用此術語；其他情況直接說**脈絡**即可。
 
-*Avoid:* "working memory" — contextual knowledge is what's in the window *now*; a [memory system](./Memory%20system.md) is what gets cross-session content into it. Different scales, don't conflate.
+*避免使用：*「工作記憶體」——情境知識是當下在視窗裡的內容；[記憶系統](./Memory%20system.md)（Memory System）則是將跨工作階段的內容帶入其中的機制。兩者的尺度不同，不能混淆。
 
-*Usage:*
+*使用範例：*
 
-"Why does it nail the API when I paste the docs and fabricate it when I don't?"
+「為什麼我貼了 API 文件它就能對，不貼就亂說？」
 
-"With the docs in, it's contextual knowledge — reading off the page. Without, it's parametric and the rare endpoints blur."
+「貼了文件後，它讀的是情境知識——像在翻書查答案。沒貼的時候依賴的是參數化知識，那些少見的端點就會模糊。」

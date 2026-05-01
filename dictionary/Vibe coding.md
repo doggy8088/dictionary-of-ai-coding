@@ -1,11 +1,11 @@
-A working pattern where the user accepts the [agent](./Agent.md)'s code without [human review](./Human%20review.md). The diff is treated as opaque — what matters is whether the program behaves, not what's inside. [Automated review](./Automated%20review.md) and [automated checks](./Automated%20check.md) may still run; vibe coding is silent on both.
+一種工作模式，使用者直接接受[代理人](./Agent.md)的程式碼，不進行[人工審查](./Human%20review.md)。程式碼差異被視為不透明的黑盒——重要的是程式是否正常運作，而非內部有什麼。[自動化審查](./Automated%20review.md)和[自動化檢查](./Automated%20check.md)可能仍會執行；氛圍編碼（Vibe Coding）對這兩者都保持沉默。
 
-*Avoid:* "vibe coding" as a synonym for "low-quality AI coding" — the term names the review stance, not the resulting code.
+*避免使用：*「氛圍編碼」作為「低品質 AI 編碼」的代名詞——這個術語描述的是審查立場，而非所產生的程式碼品質。
 
-*Usage:*
+*使用範例：*
 
-"Did you read what it changed in the auth flow?"
+「你有讀它在認證流程裡改了什麼嗎？」
 
-"Vibe coded it — login still works, that's all I checked."
+「氛圍編碼（Vibe Coding）了——登入還能用，我就只確認這個。」
 
-"Read the diff before you push, vibing on auth is how secrets leak into logs."
+「推送之前把 diff 讀一遍，在認證上氛圍編碼是 secrets 洩漏進 log 的方式。」

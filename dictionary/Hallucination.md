@@ -1,16 +1,16 @@
-Confidently-wrong [model](./Model.md) output. Two flavors with different causes and fixes:
+充滿自信卻又錯誤的[模型](./Model.md)輸出。分為兩種類型，各有不同的成因與修復方式：
 
-- *Factuality hallucination* — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](./Parametric%20knowledge.md) gaps, often past the [knowledge cutoff](./Knowledge%20cutoff.md). Fix: load the right [contextual knowledge](./Contextual%20knowledge.md).
-- *Faithfulness hallucination* — output drifts from the **contextual knowledge** that's loaded, the user's instructions, or the model's own prior reasoning. Symptom of [attention degradation](./Attention%20degradation.md); worsens in the [dumb zone](./Smart%20zone.md). Fix: [clear](./Clearing.md) or [compact](./Compaction.md).
+- *事實性幻覺*（Factuality Hallucination）——捏造或錯誤的世界知識（一個不存在的函式、錯誤的 API 簽名、虛假的引用來源）。成因是[參數化知識](./Parametric%20knowledge.md)的缺口，常發生在[知識截止日期](./Knowledge%20cutoff.md)之後的內容。修復方式：載入正確的[情境知識](./Contextual%20knowledge.md)。
+- *忠實性幻覺*（Faithfulness Hallucination）——輸出偏離了已載入的**情境知識**、使用者的指令，或模型自身先前的推理。這是[注意力衰退](./Attention%20degradation.md)（Attention Degradation）的症狀，在[混沌區](./Smart%20zone.md)會更嚴重。修復方式：[清除](./Clearing.md)或[壓縮摘要](./Compaction.md)。
 
-*Avoid:* "hallucination" as a bare synonym for "wrong" — without naming the flavor, the term has no diagnostic value.
+*避免使用：*「幻覺」作為「錯誤」的代名詞——不指明是哪種類型，這個詞就沒有任何診斷價值。
 
-*Usage:*
+*使用範例：*
 
-"It hallucinated a `parseAsync` method on the schema."
+「它幻覺出了 Schema 上一個 `parseAsync` 方法。」
 
-"Factuality or faithfulness?"
+「是事實性還是忠實性幻覺？」
 
-"The method exists in the docs I pasted — it just stopped reading them after [turn](./Turn.md) forty."
+「那個方法在我貼的文件裡有——它只是在第四十個[對話輪次](./Turn.md)後停止讀那份文件了。」
 
-"Faithfulness then. Compact and reload, don't bother adding more docs."
+「那就是忠實性幻覺。壓縮摘要並重新載入，不用再加更多文件了。」

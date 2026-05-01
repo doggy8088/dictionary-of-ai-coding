@@ -1,9 +1,9 @@
-The world the [agent](./Agent.md) acts on — anything outside the [harness](./Harness.md) that the agent perceives through [tool results](./Tool%20result.md) and changes through [tool calls](./Tool%20call.md). The harness *runs* the agent; the environment is what the agent *works in*. A file like [`AGENTS.md`](./AGENTS.md.md) lives in the environment; the harness is what loads it into the [context window](./Context%20window.md). A [filesystem](./Filesystem.md) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
+[代理人](./Agent.md)所作用的世界——[框架](./Harness.md)之外任何代理人透過[工具結果](./Tool%20result.md)感知、透過[工具呼叫](./Tool%20call.md)改變的一切。框架*執行*代理人；環境是代理人*工作的場所*。像 [`AGENTS.md`](./AGENTS.md.md) 這樣的檔案存在於環境中；框架負責將它載入[上下文視窗](./Context%20window.md)。[檔案系統](./Filesystem.md)（Filesystem）是最常見的環境類型，但並非唯一（資料庫、遠端 API、瀏覽器工作階段都可以是環境）。
 
-*Avoid:* using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
+*避免使用：*「環境」來指稱執行時期或框架本身——框架是外殼，環境是工作空間。
 
-*Usage:*
+*使用範例：*
 
-"The agent can't see the staging DB schema."
+「代理人看不到 staging 資料庫的 Schema。」
 
-"Wire it into the environment — give it a `psql` [tool](./Tool.md) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
+「把它接入環境——給它一個只對 staging 具唯讀權限的 `psql` [工具](./Tool.md)。框架沒問題，只是它沒有任何東西可以作用。」
