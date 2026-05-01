@@ -128,13 +128,13 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Model
 
-即[參數](#parameters)（Parameters）本身。[無狀態](#stateless)（Stateless）——執行[下一個語元預測](#next-token-prediction)，僅此而已。「Claude Opus 4.7」和「GPT-5」都是模型。模型本身無法做任何代理人該做的事；它必須被[框架化](#harness)（Harnessed）。
+即[參數](#parameters)（Parameters）本身。[無狀態](#stateless)（Stateless）——執行[下一個詞元預測](#next-token-prediction)，僅此而已。「Claude Opus 4.7」和「GPT-5」都是模型。模型本身無法做任何代理人該做的事；它必須被[駕馭化](#harness)（Harnessed）。
 
 *使用範例：*
 
 「規劃步驟要不要把模型從 Sonnet 換成 Opus？」
 
-「試試看吧——但這個任務大部分工作是框架在做。如果[系統提示詞](#system-prompt)和[工具](#tool)設定不對，換模型也沒用。」
+「試試看吧——但這個任務大部分工作是駕馭在做。如果[系統提示詞](#system-prompt)和[工具](#tool)設定不對，換模型也沒用。」
 
 ### Parameters
 
@@ -148,7 +148,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Training
 
-設定[模型](#model)[參數](#parameters)（Parameters）的過程——將模型暴露於大量文字，並調整參數以改善[下一個語元預測](#next-token-prediction)的準確性。由[模型供應商](#model-provider)（Model Provider）執行的一次性、高成本過程。涵蓋預訓練（pre-training，主要的大規模執行）和後訓練（post-training，後續的精煉，如指令遵循和安全性校準）；在本詞彙表的層次，這個區別並不重要。
+設定[模型](#model)[參數](#parameters)（Parameters）的過程——將模型暴露於大量文字，並調整參數以改善[下一個詞元預測](#next-token-prediction)的準確性。由[模型供應商](#model-provider)（Model Provider）執行的一次性、高成本過程。涵蓋預訓練（pre-training，主要的大規模執行）和後訓練（post-training，後續的精煉，如指令遵循和安全性校準）；在本詞彙表的層次，這個區別並不重要。
 
 *使用範例：*
 
@@ -158,7 +158,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Inference
 
-執行已訓練好的[模型](#model)以產生輸出——每次[模型供應商請求](#model-provider-request)（Model Provider Request）都在做這件事。[參數](#parameters)（Parameters）維持不變；模型只是對給定的[脈絡](#context)進行[下一個語元預測](#next-token-prediction)。相較於[訓練](#training)成本低廉，但按[語元](#token)計費，是使用模型的主要費用來源。
+執行已訓練好的[模型](#model)以產生輸出——每次[模型供應商請求](#model-provider-request)（Model Provider Request）都在做這件事。[參數](#parameters)（Parameters）維持不變；模型只是對給定的[脈絡](#context)進行[下一個詞元預測](#next-token-prediction)。相較於[訓練](#training)成本低廉，但按[詞元](#token)計費，是使用模型的主要費用來源。
 
 *使用範例：*
 
@@ -168,97 +168,97 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Token
 
-[模型](#model)讀取和寫入的原子單位。大致上與一個單字差不多，但並不完全一致——常見詞彙通常是一個語元，罕見或較長的詞彙則會拆分成多個。[上下文視窗](#context-window)的大小、費用和延遲，全部以語元（Token）為單位計算。
+[模型](#model)讀取和寫入的原子單位。大致上與一個單字差不多，但並不完全一致——常見詞彙通常是一個詞元，罕見或較長的詞彙則會拆分成多個。[上下文視窗](#context-window)的大小、費用和延遲，全部以詞元（Token）為單位計算。
 
-*避免使用：*「字詞」——語元邊界與字詞邊界並不吻合，而每秒語元數 / 每美元語元數才是真正重要的計量單位。
+*避免使用：*「字詞」——詞元邊界與字詞邊界並不吻合，而每秒詞元數 / 每美元詞元數才是真正重要的計量單位。
 
 *使用範例：*
 
 「這個提示詞會有多大？」
 
-「用 tokenizer 跑一下——Schema 本身很緊湊，但 JSON 的鍵名很怪，所以會拆分成比你預期更多的語元。」
+「用 tokenizer 跑一下——Schema 本身很緊湊，但 JSON 的鍵名很怪，所以會拆分成比你預期更多的詞元。」
 
 ### Next-token prediction
 
-[模型](#model)實際上做的事。給定一個[脈絡](#context)，它抽樣出下一個[語元](#token)，將其附加上去，然後再執行一遍。所有輸出——一個句子、一個[工具呼叫](#tool-call)、一個上千行的檔案——都是逐個語元建構起來的。模型沒有其他運作模式。
+[模型](#model)實際上做的事。給定一個[脈絡](#context)，它抽樣出下一個[詞元](#token)，將其附加上去，然後再執行一遍。所有輸出——一個句子、一個[工具呼叫](#tool-call)、一個上千行的檔案——都是逐個詞元建構起來的。模型沒有其他運作模式。
 
 *使用範例：*
 
 「[代理人](#agent)是怎麼『決定』要呼叫一個工具的？」
 
-「它不是『決定』——一路到底都是下一個語元預測（Next-Token Prediction）。工具呼叫不過是[框架](#harness)從輸出串流中解析出來的一個結構化字串。」
+「它不是『決定』——一路到底都是下一個詞元預測（Next-Token Prediction）。工具呼叫不過是[駕馭](#harness)從輸出串流中解析出來的一個結構化字串。」
 
 ### Model provider
 
-為[模型](#model)提供[推論](#inference)（Inference）服務的機構。通常是遠端服務（Anthropic、OpenAI、Google），但也可以是本地部署——在自己機器上執行的 Ollama、LM Studio、llama.cpp。[框架](#harness)自身不執行模型；它向供應商發出請求。
+為[模型](#model)提供[推論](#inference)（Inference）服務的機構。通常是遠端服務（Anthropic、OpenAI、Google），但也可以是本地部署——在自己機器上執行的 Ollama、LM Studio、llama.cpp。[駕馭](#harness)自身不執行模型；它向供應商發出請求。
 
 *使用範例：*
 
 「我們能為這個隔離網路的客戶離線執行嗎？」
 
-「將模型供應商切換為本地供應商——在他們的機器上跑 Ollama 或 llama.cpp。框架不在乎，只是換了一個端點。」
+「將模型供應商切換為本地供應商——在他們的機器上跑 Ollama 或 llama.cpp。駕馭不在乎，只是換了一個端點。」
 
 ### Harness
 
-圍繞[模型](#model)、將其轉化為[代理人](#agent)的一切：[工具](#tool)、[系統提示詞](#system-prompt)、[上下文視窗](#context-window)管理、權限設定、hooks。**Claude.ai** 和 **Claude Code** 執行的是同一個模型，行為卻大相徑庭，原因正是它們的框架不同。
+圍繞[模型](#model)、將其轉化為[代理人](#agent)的一切：[工具](#tool)、[系統提示詞](#system-prompt)、[上下文視窗](#context-window)管理、權限設定、hooks。**Claude.ai** 和 **Claude Code** 執行的是同一個模型，行為卻大相徑庭，原因正是它們的駕馭不同。
 
 *使用範例：*
 
 「同樣的模型，為什麼 Claude Code 會修改檔案，而 Claude.ai 只是回答問題？」
 
-「框架不同——Claude Code 有[檔案系統](#filesystem)工具、不同的系統提示詞和權限層。模型不是變數所在。」
+「駕馭不同——Claude Code 有[檔案系統](#filesystem)工具、不同的系統提示詞和權限層。模型不是變數所在。」
 
 ### Model provider request
 
-從[框架](#harness)到[模型供應商](#model-provider)的一次往返。框架發送當前[脈絡](#context)；供應商回傳一個回應（一個[工具呼叫](#tool-call)或最終答案）。如果[代理人](#agent)呼叫[工具](#tool)，一條使用者訊息可能觸發許多次模型供應商請求——每個[工具結果](#tool-result)都會觸發另一次請求。
+從[駕馭](#harness)到[模型供應商](#model-provider)的一次往返。駕馭發送當前[脈絡](#context)；供應商回傳一個回應（一個[工具呼叫](#tool-call)或最終答案）。如果[代理人](#agent)呼叫[工具](#tool)，一條使用者訊息可能觸發許多次模型供應商請求——每個[工具結果](#tool-result)都會觸發另一次請求。
 
 *使用範例：*
 
-「一個問題燒了四萬個[語元](#token)？」
+「一個問題燒了四萬個[詞元](#token)？」
 
 「看看工具呼叫——十二次 grep、八次讀取、四次編輯。每個工具結果都會觸發另一次模型供應商請求，而整個[工作階段](#session)的前綴每次都要重新發送。」
 
 ### Input tokens
 
-[框架](#harness)（Harness）在每次[模型供應商請求](#model-provider-request)時發送的[語元](#token)。計費費率低於[輸出語元](#output-tokens)（Output Tokens）。
+[駕馭](#harness)（Harness）在每次[模型供應商請求](#model-provider-request)時發送的[詞元](#token)。計費費率低於[輸出詞元](#output-tokens)（Output Tokens）。
 
 *使用範例：*
 
 「帳單很高，但[代理人](#agent)寫出的內容很少。」
 
-「是輸入語元（Input Tokens）的問題——每個[對話輪次](#turn)都重新發送整個[工作階段](#session)的歷史。沒有[前綴快取](#prefix-cache)（Prefix Cache）的話，每次請求都要重新為歷史記錄付費。」
+「是輸入詞元（Input Tokens）的問題——每個[對話輪次](#turn)都重新發送整個[工作階段](#session)的歷史。沒有[前綴快取](#prefix-cache)（Prefix Cache）的話，每次請求都要重新為歷史記錄付費。」
 
 ### Output tokens
 
-[模型](#model)產生回傳的[語元](#token)。計費費率高於[輸入語元](#input-tokens)，因為產生輸出需要更多運算。
+[模型](#model)產生回傳的[詞元](#token)。計費費率高於[輸入詞元](#input-tokens)，因為產生輸出需要更多運算。
 
 *使用範例：*
 
 「這次重構[工作階段](#session)燒信用額度燒得很兇，明明輸入很小。」
 
-「[代理人](#agent)在整檔重寫，而不是局部修補。輸出語元（Output Tokens）的費率大約是輸入費率的五倍——讓它只輸出差異（edits），帳單就會降下來。」
+「[代理人](#agent)在整檔重寫，而不是局部修補。輸出詞元（Output Tokens）的費率大約是輸入費率的五倍——讓它只輸出差異（edits），帳單就會降下來。」
 
 ### Prefix cache
 
-[供應商](#model-provider)端的快取儲存區，讓連續的[模型供應商請求](#model-provider-request)能夠跳過重新處理共享前綴的步驟。當一個請求的開頭與近期某個請求的開頭吻合——相同的[系統提示詞](#system-prompt)、相同的歷史記錄到某個時間點——供應商就重複使用先前的運算結果，並以[快取語元](#cache-tokens)（Cache Tokens）的折扣費率計費。
+[供應商](#model-provider)端的快取儲存區，讓連續的[模型供應商請求](#model-provider-request)能夠跳過重新處理共享前綴的步驟。當一個請求的開頭與近期某個請求的開頭吻合——相同的[系統提示詞](#system-prompt)、相同的歷史記錄到某個時間點——供應商就重複使用先前的運算結果，並以[快取詞元](#cache-tokens)（Cache Tokens）的折扣費率計費。
 
-任何改變前綴的操作（重新排列檔案順序、在[工作階段](#session)中途改寫系統提示詞、在頂部注入時間戳記）都會從該點起使快取失效，之後的請求以全額[輸入語元](#input-tokens)費率計費。
+任何改變前綴的操作（重新排列檔案順序、在[工作階段](#session)中途改寫系統提示詞、在頂部注入時間戳記）都會從該點起使快取失效，之後的請求以全額[輸入詞元](#input-tokens)費率計費。
 
 *使用範例：*
 
 「為什麼帳單在工作階段中途突然飆高？」
 
-「[框架](#harness)開始在每個[對話輪次](#turn)把當前時間注入系統提示詞。前綴快取在第一個改變的語元處就失效了，所以此後每次請求都以全額費率計費。」
+「[駕馭](#harness)開始在每個[對話輪次](#turn)把當前時間注入系統提示詞。前綴快取在第一個改變的詞元處就失效了，所以此後每次請求都以全額費率計費。」
 
 ### Cache tokens
 
-[供應商](#model-provider)（Model Provider）從先前的[模型供應商請求](#model-provider-request)（Model Provider Request）快取下來的[輸入語元](#input-tokens)（Input Tokens），不必重新處理。當連續的請求共享同一個前綴時，供應商透過其[前綴快取](#prefix-cache)（Prefix Cache）重複使用先前的運算結果，並以大幅折扣的費率計費快取部分。這是讓長[工作階段](#session)在成本上可行的關鍵機制——沒有它，每個[對話輪次](#turn)都要重新支付整段歷史的費用。
+[供應商](#model-provider)（Model Provider）從先前的[模型供應商請求](#model-provider-request)（Model Provider Request）快取下來的[輸入詞元](#input-tokens)（Input Tokens），不必重新處理。當連續的請求共享同一個前綴時，供應商透過其[前綴快取](#prefix-cache)（Prefix Cache）重複使用先前的運算結果，並以大幅折扣的費率計費快取部分。這是讓長[工作階段](#session)在成本上可行的關鍵機制——沒有它，每個[對話輪次](#turn)都要重新支付整段歷史的費用。
 
 *使用範例：*
 
 「長工作階段的費用很驚人——一次重構花了八美元。」
 
-「看看快取語元（Cache Tokens）。如果[框架](#harness)在輪次之間重新排列[系統提示詞](#system-prompt)或檔案，前綴就會失效，每次請求都要以全額輸入語元費率重新計費。」
+「看看快取詞元（Cache Tokens）。如果[駕馭](#harness)在輪次之間重新排列[系統提示詞](#system-prompt)或檔案，前綴就會失效，每次請求都要以全額輸入詞元費率重新計費。」
 
 ## Section 2 — 工作階段、上下文視窗與對話輪次
 
@@ -270,7 +270,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 「為什麼每次我[清除](#clearing)之後它就忘記了那個慣例？」
 
-「模型是無狀態的——新工作階段從空白開始。如果你想保留它，就把它寫入 [AGENTS.md](#agentsmd) 或一個[框架](#harness)在工作階段開始時會載入的記憶檔案。」
+「模型是無狀態的——新工作階段從空白開始。如果你想保留它，就把它寫入 [AGENTS.md](#agentsmd) 或一個[駕馭](#harness)在工作階段開始時會載入的記憶檔案。」
 
 ### Context
 
@@ -292,37 +292,37 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 「我可以把整個 monorepo 貼到提示詞裡嗎？」
 
-「上下文視窗有 20 萬個[語元](#token)——大概只是整個代碼庫的五分之一。選取任務會觸及的檔案，把其餘的留在[工具呼叫](#tool-call)後面按需載入。」
+「上下文視窗有 20 萬個[詞元](#token)——大概只是整個代碼庫的五分之一。選取任務會觸及的檔案，把其餘的留在[工具呼叫](#tool-call)後面按需載入。」
 
 ### Stateful
 
-攜帶資訊向前傳遞。一個[工作階段](#session)在[對話輪次](#turn)之間是有狀態的——[脈絡](#context)在工作階段執行期間持續累積，這正是為何長工作階段會漂入[混沌區](#smart-zone)。代理人可以透過加入[記憶系統](#memory-system)（Memory System）跨**工作階段**保有狀態——將資訊持久化到[環境](#environment)，並在未來工作階段開始時重新載入。[模型](#model)永遠不是有狀態的；任何表面上的連續性都是[框架](#harness)重新輸入脈絡的結果。與[無狀態](#stateless)（Stateless）相對。
+攜帶資訊向前傳遞。一個[工作階段](#session)在[對話輪次](#turn)之間是有狀態的——[脈絡](#context)在工作階段執行期間持續累積，這正是為何長工作階段會漂入[混沌區](#smart-zone)。代理人可以透過加入[記憶系統](#memory-system)（Memory System）跨**工作階段**保有狀態——將資訊持久化到[環境](#environment)，並在未來工作階段開始時重新載入。[模型](#model)永遠不是有狀態的；任何表面上的連續性都是[駕馭](#harness)重新輸入脈絡的結果。與[無狀態](#stateless)（Stateless）相對。
 
 *使用範例：*
 
 「它記得我昨天的偏好設定——這表示模型學到了嗎？」
 
-「沒有，代理人是有狀態的，因為框架把設定寫進了記憶檔案並在工作階段開始時重新載入。模型本身對昨天的事一無所知。」
+「沒有，代理人是有狀態的，因為駕馭把設定寫進了記憶檔案並在工作階段開始時重新載入。模型本身對昨天的事一無所知。」
 
 ### Agent
 
 一個配備了[工具](#tool)（Tools）、[系統提示詞](#system-prompt)（System Prompt）和[上下文視窗](#context-window)（Context Window）的[模型](#model)（Model），透過[對話輪次](#turn)與使用者互動。*Claude Code 是代理人。Cursor 是代理人。Claude.ai 是代理人。* 代理人是你實際與之對話的存在——是運作中的模型，針對特定目的進行配置。
 
-*避免使用：*「AI」、「機器人」（too vague — 這些說法過於模糊，無法區分你指的是模型參數本身，還是經過框架化的整體系統）。
+*避免使用：*「AI」、「機器人」（too vague — 這些說法過於模糊，無法區分你指的是模型參數本身，還是經過駕馭化的整體系統）。
 
 *使用範例：*
 
 「你用哪個代理人來跑這次的遷移作業？」
 
-「本地用 Claude Code，UI 部分用 Cursor——底層是同一個模型，框架不同。」
+「本地用 Claude Code，UI 部分用 Cursor——底層是同一個模型，駕馭不同。」
 
 ### System prompt
 
-[框架](#harness)在每次[模型供應商請求](#model-provider-request)前都會加入的指令——[代理人](#agent)的常駐任務說明書：它是誰、如何行事、可以呼叫哪些[工具](#tool)、應遵循哪些慣例。通常在整個[工作階段](#session)期間保持穩定。
+[駕馭](#harness)在每次[模型供應商請求](#model-provider-request)前都會加入的指令——[代理人](#agent)的常駐任務說明書：它是誰、如何行事、可以呼叫哪些[工具](#tool)、應遵循哪些慣例。通常在整個[工作階段](#session)期間保持穩定。
 
 *使用範例：*
 
-「兩個框架、同一個[模型](#model)，同樣的提示詞行為卻截然不同。」
+「兩個駕馭、同一個[模型](#model)，同樣的提示詞行為卻截然不同。」
 
 「系統提示詞不同。一個調整為精簡的程式碼編輯，另一個調整為解釋說明——差異就在那裡，在你的訊息到達之前就已決定了。」
 
@@ -350,49 +350,49 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Environment
 
-[代理人](#agent)所作用的世界——[框架](#harness)之外任何代理人透過[工具結果](#tool-result)感知、透過[工具呼叫](#tool-call)改變的一切。框架*執行*代理人；環境是代理人*工作的場所*。像 [`AGENTS.md`](#agentsmd) 這樣的檔案存在於環境中；框架負責將它載入[上下文視窗](#context-window)。[檔案系統](#filesystem)（Filesystem）是最常見的環境類型，但並非唯一（資料庫、遠端 API、瀏覽器工作階段都可以是環境）。
+[代理人](#agent)所作用的世界——[駕馭](#harness)之外任何代理人透過[工具結果](#tool-result)感知、透過[工具呼叫](#tool-call)改變的一切。駕馭*執行*代理人；環境是代理人*工作的場所*。像 [`AGENTS.md`](#agentsmd) 這樣的檔案存在於環境中；駕馭負責將它載入[上下文視窗](#context-window)。[檔案系統](#filesystem)（Filesystem）是最常見的環境類型，但並非唯一（資料庫、遠端 API、瀏覽器工作階段都可以是環境）。
 
-*避免使用：*「環境」來指稱執行時期或框架本身——框架是外殼，環境是工作空間。
+*避免使用：*「環境」來指稱執行時期或駕馭本身——駕馭是外殼，環境是工作空間。
 
 *使用範例：*
 
 「代理人看不到 staging 資料庫的 Schema。」
 
-「把它接入環境——給它一個只對 staging 具唯讀權限的 `psql` [工具](#tool)。框架沒問題，只是它沒有任何東西可以作用。」
+「把它接入環境——給它一個只對 staging 具唯讀權限的 `psql` [工具](#tool)。駕馭沒問題，只是它沒有任何東西可以作用。」
 
 ### Filesystem
 
-[代理人](#agent)讀取、寫入、並在其中執行程式的檔案與目錄樹——coding agent 預設的[環境](#environment)類型。[AGENTS.md](#agentsmd)、[技能](#skill)（Skills）、原始碼、建置腳本和[工具](#tool)配置，全都存放在檔案系統中。當一個[框架](#harness)「從你的專案啟動」時，它就是在將代理人指向一個檔案系統。
+[代理人](#agent)讀取、寫入、並在其中執行程式的檔案與目錄樹——coding agent 預設的[環境](#environment)類型。[AGENTS.md](#agentsmd)、[技能](#skill)（Skills）、原始碼、建置腳本和[工具](#tool)配置，全都存放在檔案系統中。當一個[駕馭](#harness)「從你的專案啟動」時，它就是在將代理人指向一個檔案系統。
 
 *使用範例：*
 
 「它為什麼沒有讀到我的 AGENTS.md？」
 
-「它跑的是另一個檔案系統——[沙盒](#sandbox)掛載了上層目錄，而不是專案根目錄。重新指定框架的路徑。」
+「它跑的是另一個檔案系統——[沙盒](#sandbox)掛載了上層目錄，而不是專案根目錄。重新指定駕馭的路徑。」
 
 ### Tool
 
-[框架](#harness)暴露給[代理人](#agent)可以呼叫的函式——Read（讀取）、Write（寫入）、Bash（執行指令）、Search（搜尋）。工具是代理人感知並作用於[環境](#environment)的方式：代理人除了透過[工具結果](#tool-result)之外無法感知環境，除了透過[工具呼叫](#tool-call)之外無法改變環境。每次工具呼叫都需要額外一次[模型供應商請求](#model-provider-request)，因為結果必須返回給模型，模型才能決定下一步。
+[駕馭](#harness)暴露給[代理人](#agent)可以呼叫的函式——Read（讀取）、Write（寫入）、Bash（執行指令）、Search（搜尋）。工具是代理人感知並作用於[環境](#environment)的方式：代理人除了透過[工具結果](#tool-result)之外無法感知環境，除了透過[工具呼叫](#tool-call)之外無法改變環境。每次工具呼叫都需要額外一次[模型供應商請求](#model-provider-request)，因為結果必須返回給模型，模型才能決定下一步。
 
 *使用範例：*
 
 「代理人可以直接查詢 staging 資料庫嗎？」
 
-「在框架裡加一個 `psql` 工具，限定只對 staging 具唯讀權限。沒有對應工具的話，代理人對[檔案系統](#filesystem)之外的一切都是盲的。」
+「在駕馭裡加一個 `psql` 工具，限定只對 staging 具唯讀權限。沒有對應工具的話，代理人對[檔案系統](#filesystem)之外的一切都是盲的。」
 
 ### Tool call
 
-[模型](#model)輸出的、指定某個[工具](#tool)及其參數的內容——這不過是結構化文字。它本身不做任何事；[框架](#harness)必須讀取它並執行。由模型在一次[模型供應商請求](#model-provider-request)中產生。
+[模型](#model)輸出的、指定某個[工具](#tool)及其參數的內容——這不過是結構化文字。它本身不做任何事；[駕馭](#harness)必須讀取它並執行。由模型在一次[模型供應商請求](#model-provider-request)中產生。
 
 *使用範例：*
 
 「它說它跑了測試，但檔案的時間戳記沒有變。」
 
-「看一下對話紀錄——它是真的發出了工具呼叫，還是只是描述跑了測試？模型產生呼叫指令，但如果框架沒有執行它，什麼都沒發生。」
+「看一下對話紀錄——它是真的發出了工具呼叫，還是只是描述跑了測試？模型產生呼叫指令，但如果駕馭沒有執行它，什麼都沒發生。」
 
 ### Tool result
 
-[框架](#harness)執行[工具呼叫](#tool-call)後回傳的內容——檔案內容、指令輸出、錯誤訊息。這是[代理人](#agent)感知[環境](#environment)的唯一窗口。在*下一次*[模型供應商請求](#model-provider-request)中傳回[模型](#model)，模型才能決定如何處理它。工具呼叫和工具結果是同一次交換的兩端，都發生在同一個[對話輪次](#turn)之內。
+[駕馭](#harness)執行[工具呼叫](#tool-call)後回傳的內容——檔案內容、指令輸出、錯誤訊息。這是[代理人](#agent)感知[環境](#environment)的唯一窗口。在*下一次*[模型供應商請求](#model-provider-request)中傳回[模型](#model)，模型才能決定如何處理它。工具呼叫和工具結果是同一次交換的兩端，都發生在同一個[對話輪次](#turn)之內。
 
 *使用範例：*
 
@@ -402,7 +402,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Permission request
 
-[框架](#harness)在執行未預先核准的[工具呼叫](#tool-call)前，向使用者展示的提示。[模型](#model)產生工具呼叫；框架不立即執行，而是暫停並詢問使用者。核准則執行；拒絕則框架將拒絕結果作為[工具結果](#tool-result)回報給模型。這是框架讓人類加入[迴圈](#human-in-the-loop)以監督風險或敏感操作的機制。
+[駕馭](#harness)在執行未預先核准的[工具呼叫](#tool-call)前，向使用者展示的提示。[模型](#model)產生工具呼叫；駕馭不立即執行，而是暫停並詢問使用者。核准則執行；拒絕則駕馭將拒絕結果作為[工具結果](#tool-result)回報給模型。這是駕馭讓人類加入[迴圈](#human-in-the-loop)以監督風險或敏感操作的機制。
 
 *使用範例：*
 
@@ -412,7 +412,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Permission mode
 
-[代理人模式](#agent-mode)（Agent Mode）中負責權限把關的切片——哪些[工具呼叫](#tool-call)會觸發[權限請求](#permission-request)（Permission Request），哪些會自動執行。這是模式系統的原始用途，後來[框架](#harness)才開始在其上捆綁行為指令。
+[代理人模式](#agent-mode)（Agent Mode）中負責權限把關的切片——哪些[工具呼叫](#tool-call)會觸發[權限請求](#permission-request)（Permission Request），哪些會自動執行。這是模式系統的原始用途，後來[駕馭](#harness)才開始在其上捆綁行為指令。
 
 *使用範例：*
 
@@ -503,27 +503,27 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Attention relationship
 
-在預測每個[語元](#token)時，[模型](#model)會將[脈絡](#context)中所有其他語元都納入考量——有些影響深遠，有些幾乎微不足道。兩個語元之間的配對關係即為**注意力關係**（Attention Relationship），有意義的配對（例如「她」與「Sarah」，或一個 `getUser()` 呼叫與其 `function getUser` 定義）彼此的影響遠大於無關聯的配對。一個包含 N 個語元的脈絡，大約有 N² 個注意力關係。
+在預測每個[詞元](#token)時，[模型](#model)會將[脈絡](#context)中所有其他詞元都納入考量——有些影響深遠，有些幾乎微不足道。兩個詞元之間的配對關係即為**注意力關係**（Attention Relationship），有意義的配對（例如「她」與「Sarah」，或一個 `getUser()` 呼叫與其 `function getUser` 定義）彼此的影響遠大於無關聯的配對。一個包含 N 個詞元的脈絡，大約有 N² 個注意力關係。
 
 *使用範例：*
 
 「它一直在 diff 裡搞混那兩個 `user` 符號——聽起來像是進了[混沌區](#smart-zone)。」
 
-「對，每個呼叫端與其宣告之間的注意力關係互相干擾——相同的語元形狀，但綁定的對象不同。把其中一個改名，配對關係就會變得清晰。」
+「對，每個呼叫端與其宣告之間的注意力關係互相干擾——相同的詞元形狀，但綁定的對象不同。把其中一個改名，配對關係就會變得清晰。」
 
 ### Attention budget
 
-每個[語元](#token)（Token）能分配給其餘[脈絡](#context)（Context）的影響力是有限的。對[某個關係](#attention-relationship)（Attention Relationship）施加大量影響，留給其他關係的就越少。這個預算是每個語元固定的，不會隨脈絡擴大而增長，這正是為何[工作階段](#session)越長，效果越稀薄。
+每個[詞元](#token)（Token）能分配給其餘[脈絡](#context)（Context）的影響力是有限的。對[某個關係](#attention-relationship)（Attention Relationship）施加大量影響，留給其他關係的就越少。這個預算是每個詞元固定的，不會隨脈絡擴大而增長，這正是為何[工作階段](#session)越長，效果越稀薄。
 
 *使用範例：*
 
 「它為什麼一直忽略我貼在最上面的 Schema？」
 
-「我們已深入[混沌區](#smart-zone)了——每個語元的注意力預算是固定的，但脈絡不斷增長。Schema 的訊號現在必須跟幾千個新語元競爭。」
+「我們已深入[混沌區](#smart-zone)了——每個詞元的注意力預算是固定的，但脈絡不斷增長。Schema 的訊號現在必須跟幾千個新詞元競爭。」
 
 ### Attention degradation
 
-隨著[工作階段](#session)不斷增長，每個[語元](#token)的[注意力預算](#attention-budget)（Attention Budget）必須分配給更多的競爭者。任何一個[有意義關係](#attention-relationship)（Attention Relationship）上的訊號都會減弱；不相關的[脈絡](#context)雜訊大量湧入。同樣的[模型](#model)、同樣的[參數](#parameters)——只是要從同一個盤子上餵食的嘴巴多了。這是清晰區與[混沌區效應](#smart-zone)的根本成因。
+隨著[工作階段](#session)不斷增長，每個[詞元](#token)的[注意力預算](#attention-budget)（Attention Budget）必須分配給更多的競爭者。任何一個[有意義關係](#attention-relationship)（Attention Relationship）上的訊號都會減弱；不相關的[脈絡](#context)雜訊大量湧入。同樣的[模型](#model)、同樣的[參數](#parameters)——只是要從同一個盤子上餵食的嘴巴多了。這是清晰區與[混沌區效應](#smart-zone)的根本成因。
 
 *使用範例：*
 
@@ -533,7 +533,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Smart zone
 
-[工作階段](#session)剛開始時，[代理人](#agent)處於「清晰區」（Smart Zone）——思維敏銳、專注、召回能力良好。隨著工作階段增長，它逐漸漂入「混沌區」（Dumb Zone）：更粗心、更健忘、更多錯誤——且更多**忠實性[幻覺](#hallucination)**。同樣的[模型](#model)、同樣的[框架](#harness)——只是[脈絡](#context)變多了。這是[注意力衰退](#attention-degradation)的直觀感受。工作階段膨脹時應[清除](#clearing)或[壓縮摘要](#compaction)，不要硬撐。
+[工作階段](#session)剛開始時，[代理人](#agent)處於「清晰區」（Smart Zone）——思維敏銳、專注、召回能力良好。隨著工作階段增長，它逐漸漂入「混沌區」（Dumb Zone）：更粗心、更健忘、更多錯誤——且更多**忠實性[幻覺](#hallucination)**。同樣的[模型](#model)、同樣的[駕馭](#harness)——只是[脈絡](#context)變多了。這是[注意力衰退](#attention-degradation)的直觀感受。工作階段膨脹時應[清除](#clearing)或[壓縮摘要](#compaction)，不要硬撐。
 
 *使用範例：*
 
@@ -605,7 +605,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### Autocompact
 
-由[框架](#harness)（Harness）在[上下文視窗](#context-window)接近填滿時自動觸發的[壓縮摘要](#compaction)（Compaction）。
+由[駕馭](#harness)（Harness）在[上下文視窗](#context-window)接近填滿時自動觸發的[壓縮摘要](#compaction)（Compaction）。
 
 *使用範例：*
 
@@ -627,13 +627,13 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ### AGENTS.md
 
-一個位於[環境](#environment)（Environment）中、由[框架](#harness)（Harness）在[工作階段](#session)（Session）開始時載入[上下文視窗](#context-window)（Context Window）的檔案——這是專案給[代理人](#agent)的常駐任務說明書。各家框架通用的慣例。
+一個位於[環境](#environment)（Environment）中、由[駕馭](#harness)（Harness）在[工作階段](#session)（Session）開始時載入[上下文視窗](#context-window)（Context Window）的檔案——這是專案給[代理人](#agent)的常駐任務說明書。各家駕馭通用的慣例。
 
-*避免使用：* 將 AGENTS.md 用於應[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的內容——放在 AGENTS.md 裡的任何內容，每個[對話輪次](#turn)（Turn）都要付出[語元](#token)（Token）代價。
+*避免使用：* 將 AGENTS.md 用於應[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的內容——放在 AGENTS.md 裡的任何內容，每個[對話輪次](#turn)（Turn）都要付出[詞元](#token)（Token）代價。
 
 *使用範例：*
 
-「為什麼每個工作階段一開始就已燒掉 4000 個語元了？」
+「為什麼每個工作階段一開始就已燒掉 4000 個詞元了？」
 
 「看看 AGENTS.md——有人把整份樣式指南直接貼在裡面，而不是把它放在[技能](#skill)（Skill）後面按需載入。」
 
@@ -645,11 +645,11 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 「我應該把整份樣式指南塞進 [AGENTS.md](#agentsmd) 嗎？」
 
-「不——漸進式揭露（Progressive Disclosure）。把樣式指南作為一個[技能](#skill)（Skill）來引用，讓代理人在真正需要寫元件時才載入它。AGENTS.md 每個[對話輪次](#turn)都要付出[語元](#token)代價。」
+「不——漸進式揭露（Progressive Disclosure）。把樣式指南作為一個[技能](#skill)（Skill）來引用，讓代理人在真正需要寫元件時才載入它。AGENTS.md 每個[對話輪次](#turn)都要付出[詞元](#token)代價。」
 
 ### Skill
 
-一種可訓練的能力單元——針對某一項任務做好所需的指令和資源，存放在[環境](#environment)中，只在相關時才載入[上下文視窗](#context-window)。這是[框架](#harness)中實現[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的基本單位。
+一種可訓練的能力單元——針對某一項任務做好所需的指令和資源，存放在[環境](#environment)中，只在相關時才載入[上下文視窗](#context-window)。這是[駕馭](#harness)中實現[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的基本單位。
 
 *避免使用：*「[工具](#tool)」——工具是代理人*呼叫*的東西；技能（Skill）是代理人*讀取*的指令。
 
@@ -657,7 +657,7 @@ AI 編碼的基本術語，一個下午就能學完。掌握了這些術語，�
 
 「部署操作手冊要放哪裡？」
 
-「作為一個技能——代理人只在任務涉及部署時才載入它。放在 [AGENTS.md](#agentsmd) 裡，每個[對話輪次](#turn)就要為一個每週只用一次的東西消耗[語元](#token)。」
+「作為一個技能——代理人只在任務涉及部署時才載入它。放在 [AGENTS.md](#agentsmd) 裡，每個[對話輪次](#turn)就要為一個每週只用一次的東西消耗[詞元](#token)。」
 
 ### Subagent
 

@@ -1,4 +1,4 @@
-由[框架](./Harness.md)（Harness）在[上下文視窗](./Context%20window.md)接近填滿時自動觸發的[壓縮摘要](./Compaction.md)（Compaction）。
+由[駕馭](./Harness.md)（Harness）在[上下文視窗](./Context%20window.md)接近填滿時自動觸發的[壓縮摘要](./Compaction.md)（Compaction）。
 
 *使用範例：*
 
