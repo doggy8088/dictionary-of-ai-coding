@@ -105,11 +105,12 @@ summary:focus-visible {
 
 .site-hero {
   position: relative;
-  padding: clamp(24px, 5vw, 54px);
+  padding: clamp(28px, 5vw, 56px);
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 34px;
+  border-radius: 40px;
   background:
+    radial-gradient(circle at 78% 68%, color-mix(in srgb, var(--accent), transparent 66%), transparent 22rem),
     linear-gradient(135deg, color-mix(in srgb, var(--surface-solid), transparent 10%), transparent),
     var(--surface);
   box-shadow: var(--shadow);
@@ -119,22 +120,27 @@ summary:focus-visible {
 
 .site-hero::after {
   position: absolute;
-  right: clamp(24px, 7vw, 88px);
-  bottom: -72px;
-  width: min(38vw, 360px);
+  right: clamp(18px, 3vw, 36px);
+  top: clamp(18px, 3vw, 30px);
+  bottom: clamp(18px, 3vw, 30px);
+  width: min(34vw, 340px);
   aspect-ratio: 1;
   content: "";
   border: 1px solid var(--border);
-  border-radius: 999px;
-  background: radial-gradient(circle, var(--accent-soft), transparent 64%);
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 28% 72%, var(--accent-soft), transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-solid), transparent 96%), transparent);
 }
 
 .hero-kicker {
   width: fit-content;
-  margin-bottom: clamp(18px, 3vw, 38px);
-  padding: 0.35rem 0.75rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: clamp(24px, 4vw, 56px);
+  padding: 0.45rem 1rem;
   color: var(--accent-strong);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -147,50 +153,82 @@ summary:focus-visible {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
-  gap: clamp(20px, 4vw, 42px);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+  gap: clamp(24px, 4vw, 44px);
+  align-items: end;
 }
 
 .hero-content {
   min-width: 0;
+  padding: clamp(42px, 8vw, 108px) 0 clamp(18px, 2vw, 26px);
   padding-right: clamp(8px, 1vw, 18px);
+}
+
+.hero-content::after {
+  display: block;
+  width: 74px;
+  height: 5px;
+  margin-top: clamp(18px, 2vw, 22px);
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), transparent 20%));
+}
+
+.hero-side {
+  position: relative;
+  display: grid;
+  justify-items: end;
+  align-self: stretch;
 }
 
 .hero-art {
   position: relative;
-  min-height: clamp(240px, 28vw, 420px);
+  width: 100%;
+  min-height: clamp(340px, 34vw, 580px);
   pointer-events: none;
 }
 
 .hero-art::before {
   position: absolute;
-  inset: 8% 6% 4% 14%;
+  inset: 10% 6% 6% 18%;
   content: "";
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 64%);
   border-radius: 999px;
-  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
-  filter: blur(2px);
+  background: radial-gradient(circle, var(--accent-soft), transparent 72%);
+  filter: blur(1px);
+}
+
+.hero-art::after {
+  position: absolute;
+  inset: 4% -8% -4% 8%;
+  content: "";
+  background:
+    radial-gradient(circle at 42% 62%, color-mix(in srgb, var(--accent), transparent 24%), transparent 15rem),
+    radial-gradient(circle at 58% 52%, color-mix(in srgb, var(--surface-solid), transparent 68%), transparent 11rem);
+  filter: blur(10px);
+  opacity: 0.82;
 }
 
 .hero-art img {
   position: absolute;
-  inset: -2% -12% -12% -6%;
-  width: 118%;
-  height: 118%;
+  right: -12%;
+  bottom: -18%;
+  width: 128%;
+  max-width: none;
+  height: auto;
   object-fit: cover;
-  object-position: right center;
-  opacity: 0.76;
+  object-position: right bottom;
+  opacity: 0.92;
   mix-blend-mode: screen;
-  filter: saturate(0.92) brightness(0.98);
+  filter: saturate(0.94) brightness(1.02);
 }
 
 .eyebrow {
-  margin: 0 0 0.65rem;
+  margin: 0 0 1rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -200,29 +238,28 @@ summary:focus-visible {
   font-family: var(--display-font);
   font-size: clamp(1.9rem, 4.15vw, 3.9rem);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.04;
   letter-spacing: -0.045em;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .hero-copy {
   max-width: 34rem;
-  margin: clamp(14px, 2.4vw, 24px) 0 0;
+  margin: clamp(18px, 2.8vw, 28px) 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 0.7vw + 0.9rem, 1.2rem);
   line-height: 1.62;
 }
 
 .theme-toggle {
-  position: absolute;
-  top: clamp(18px, 3vw, 32px);
-  right: clamp(18px, 4vw, 42px);
-  z-index: 2;
+  position: relative;
+  z-index: 3;
   display: inline-flex;
   gap: 0.65rem;
   align-items: center;
   min-height: 48px;
-  padding: 0.55rem 0.85rem;
+  margin: 0 0 1.25rem;
+  padding: 0.6rem 0.95rem;
   color: var(--text);
   font: inherit;
   font-size: 0.95rem;
@@ -230,8 +267,8 @@ summary:focus-visible {
   cursor: pointer;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface-solid), transparent 12%);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: color-mix(in srgb, var(--surface-solid), transparent 8%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .theme-toggle__icon {
@@ -389,19 +426,24 @@ blockquote p + p {
   }
 
   .hero-content {
+    padding-top: 0;
     padding-right: 0;
   }
 
+  .hero-side {
+    justify-items: start;
+  }
+
   .hero-art {
-    min-height: 180px;
-    margin-top: -4px;
+    min-height: 220px;
+    margin-top: 6px;
   }
 
   .hero-art img {
-    inset: -12% -8% -18% -8%;
-    width: 116%;
-    height: 126%;
-    object-position: center 42%;
+    right: -6%;
+    bottom: -18%;
+    width: 112%;
+    object-position: center 58%;
   }
 
   .site-hero h1 {
@@ -415,7 +457,7 @@ blockquote p + p {
 
 @media (max-width: 520px) {
   .site-hero {
-    padding-top: 72px;
+    padding-top: 24px;
   }
 
   .hero-kicker {
@@ -424,6 +466,7 @@ blockquote p + p {
 
   .theme-toggle {
     min-height: 42px;
+    margin-bottom: 0.9rem;
     padding: 0.45rem 0.68rem;
     font-size: 0.85rem;
   }
@@ -434,6 +477,6 @@ blockquote p + p {
   }
 
   .hero-art {
-    min-height: 150px;
+    min-height: 180px;
   }
 }

@@ -29,13 +29,15 @@
             <h1>{{ site.title }}</h1>
             <p class="hero-copy">{{ site.description }}</p>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <img src="{{ '/assets/images/hero-ornament-v1.webp' | relative_url }}" alt="">
+          <div class="hero-side">
+            <button class="theme-toggle" type="button" aria-label="切換深色與淺色主題" aria-pressed="false">
+              <span class="theme-toggle__icon" aria-hidden="true"></span>
+              <span class="theme-toggle__label">切換主題</span>
+            </button>
+            <div class="hero-art" aria-hidden="true">
+              <img src="{{ '/assets/images/hero-ornament-v1.webp' | relative_url }}" alt="">
+            </div>
           </div>
-          <button class="theme-toggle" type="button" aria-label="切換深色與淺色主題" aria-pressed="false">
-            <span class="theme-toggle__icon" aria-hidden="true"></span>
-            <span class="theme-toggle__label">切換主題</span>
-          </button>
         </div>
       </header>
 
