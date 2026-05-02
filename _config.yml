@@ -1,0 +1,16 @@
+title: AI Coding 術語辭典
+description: AI Coding 的詞彙，用清晰的語言翻譯給你。
+lang: zh-TW
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - internal
