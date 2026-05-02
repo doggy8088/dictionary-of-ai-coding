@@ -14,8 +14,8 @@
   --shadow: 0 28px 80px rgba(67, 49, 28, 0.18);
   --code-bg: rgba(35, 31, 26, 0.07);
   --hero-glow: rgba(184, 70, 39, 0.22);
-  --body-font: "IBM Plex Sans TC", "Noto Sans TC", sans-serif;
-  --display-font: "Newsreader", "IBM Plex Sans TC", serif;
+  --body-font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --display-font: "Noto Serif TC", "Noto Sans TC", "PingFang TC", serif;
 }
 
 :root[data-theme="dark"] {
@@ -157,13 +157,13 @@ summary:focus-visible {
 }
 
 .site-hero h1 {
-  max-width: 13ch;
+  max-width: 14ch;
   margin: 0;
   font-family: var(--display-font);
-  font-size: clamp(2.6rem, 7vw, 5.6rem);
+  font-size: clamp(2.25rem, 4.8vw, 4rem);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
 }
 
 .hero-copy {
@@ -222,13 +222,13 @@ summary:focus-visible {
   color: var(--text);
   font-family: var(--display-font);
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .content-card h2 {
   margin: 3.25rem 0 1rem;
   padding-top: 1rem;
-  font-size: clamp(2rem, 2.2vw + 1rem, 3rem);
+  font-size: clamp(1.75rem, 1.7vw + 1rem, 2.55rem);
   border-top: 1px solid var(--border);
 }
 
@@ -239,7 +239,7 @@ summary:focus-visible {
 
 .content-card h3 {
   margin: 2.35rem 0 0.75rem;
-  font-size: clamp(1.45rem, 1.2vw + 1rem, 2rem);
+  font-size: clamp(1.3rem, 0.85vw + 1rem, 1.75rem);
 }
 
 .content-card p {
