@@ -22,19 +22,21 @@
 
     <div class="page-shell">
       <header class="site-hero" aria-label="Site introduction">
-        <div class="hero-kicker">Dictionary of AI Coding</div>
+        <div class="hero-top">
+          <div class="hero-kicker">Dictionary of AI Coding</div>
+          <button class="theme-toggle" type="button" aria-label="切換深色與淺色主題" aria-pressed="false">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+            <span class="theme-toggle__label">切換主題</span>
+          </button>
+        </div>
         <div class="hero-grid">
           <div class="hero-content">
             <p class="eyebrow">繁體中文譯本</p>
             <h1>{{ site.title }}</h1>
             <p class="hero-copy">{{ site.description }}</p>
           </div>
-          <div class="hero-side">
-            <button class="theme-toggle" type="button" aria-label="切換深色與淺色主題" aria-pressed="false">
-              <span class="theme-toggle__icon" aria-hidden="true"></span>
-              <span class="theme-toggle__label">切換主題</span>
-            </button>
-            <div class="hero-art" aria-hidden="true">
+          <div class="hero-side" aria-hidden="true">
+            <div class="hero-art">
               <img src="{{ '/assets/images/hero-ornament-v1.webp' | relative_url }}" alt="">
             </div>
           </div>
