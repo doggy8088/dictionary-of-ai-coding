@@ -82,6 +82,28 @@ function rewriteLinks(body: string): string {
   });
 }
 
+function formatUsageExamples(body: string): string {
+  const marker = "*情境例句：*";
+  const lines = body.split("\n");
+  const markerIndex = lines.findIndex((line) => line.trim() === marker);
+  if (markerIndex === -1) return body;
+
+  const before = lines.slice(0, markerIndex + 1);
+  const examples = lines.slice(markerIndex + 1).filter((line) => line.trim() !== "");
+  const formatted: string[] = [];
+
+  for (let i = 0; i < examples.length; i += 2) {
+    const first = examples[i];
+    const second = examples[i + 1];
+    if (!first) continue;
+
+    formatted.push("", `> ${first}`);
+    if (second) formatted.push(">", `> ${second}`);
+  }
+
+  return [...before, ...formatted].join("\n");
+}
+
 function main(): void {
   const template = readFileSync(TEMPLATE, "utf8");
   if (!template.includes(MARKER)) fail(`Template missing ${MARKER} marker`);
@@ -103,7 +125,8 @@ function main(): void {
       } catch {
         fail(`Curriculum.md references "${term}" but ${entryPath} does not exist`);
       }
-      parts.push(`### ${term}`, "", rewriteLinks(stripFrontmatter(body).trimEnd()), "");
+      const entry = formatUsageExamples(rewriteLinks(stripFrontmatter(body).trimEnd()));
+      parts.push(`### ${term}`, "", entry, "");
     }
   }
 
