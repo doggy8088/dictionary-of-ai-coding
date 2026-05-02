@@ -1,11 +1,11 @@
-The user reading the code the [agent](./Agent.md) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's *description* of what it did does not — narration is not the artifact.
+使用者親自閱讀[代理人](./Agent.md)生成的程式碼並形成判斷。閱讀 diff 或修改後的檔案才算數；只閱讀代理人對其操作的*描述*並不算——敘述不等於產出物本身。
 
-*Avoid:* "code review" alone — ambiguous between human and [automated](./Automated%20review.md).
+*避免使用：*單獨說「程式碼審查」——這個說法含糊，無法區分是人工審查還是[自動化審查](./Automated%20review.md)。
 
-*Usage:*
+*使用範例：*
 
-"I human-reviewed the [AFK](./AFK.md) output."
+「我人工審查了 [AFK](./AFK.md) 的輸出。」
 
-"You read the diff or just the summary?"
+「你讀了 diff 還是只看摘要？」
 
-"Diff. The summary said it deleted dead code — turned out the function was called from a generated file."
+「讀了 diff。摘要說它刪除了死碼——結果那個函式是從一個生成的檔案裡呼叫的。」

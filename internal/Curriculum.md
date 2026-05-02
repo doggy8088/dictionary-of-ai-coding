@@ -1,4 +1,4 @@
-## Section 1 — The Model
+## Section 1 — 模型
 
 - Model
 - Parameters
@@ -14,7 +14,7 @@
 - Prefix cache
 - Cache tokens
 
-## Section 2 — Sessions, Context Windows & Turns
+## Section 2 — 工作階段、上下文視窗與對話輪次
 
 - Stateless
 - Context
@@ -25,7 +25,7 @@
 - Session
 - Turn
 
-## Section 3 — Tools & Environment
+## Section 3 — 工具與環境
 
 - Environment
 - Filesystem
@@ -37,7 +37,7 @@
 - Agent mode
 - Sandbox
 
-## Section 4 — Hallucination & Why It Happens
+## Section 4 — 幻覺及其成因
 
 - Hallucination
 - Parametric knowledge
@@ -48,7 +48,7 @@
 - Attention degradation
 - Smart zone
 
-## Section 5 — Handoffs
+## Section 5 — 交接
 
 - Clearing
 - Handoff
@@ -58,7 +58,7 @@
 - Compaction
 - Autocompact
 
-## Section 6 — Memory and Steering
+## Section 6 — 記憶與引導
 
 - Memory system
 - AGENTS.md
@@ -66,7 +66,7 @@
 - Skill
 - Subagent
 
-## Section 7 — Patterns of Work
+## Section 7 — 工作模式
 
 - Human-in-the-loop
 - AFK

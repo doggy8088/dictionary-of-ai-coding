@@ -1,7 +1,7 @@
-A tree of files and directories the [agent](./Agent.md) reads from, writes to, and executes within — the default kind of [environment](./Environment.md) for a coding agent. [AGENTS.md](./AGENTS.md.md), [skills](./Skill.md), source code, build scripts, and [tool](./Tool.md) configs all live in a filesystem. When a [harness](./Harness.md) "starts in your project," it's pointing the agent at a filesystem.
+[代理人](./Agent.md)讀取、寫入、並在其中執行程式的檔案與目錄樹——coding agent 預設的[環境](./Environment.md)類型。[AGENTS.md](./AGENTS.md.md)、[技能](./Skill.md)（Skills）、原始碼、建置腳本和[工具](./Tool.md)配置，全都存放在檔案系統中。當一個[駕馭](./Harness.md)「從你的專案啟動」時，它就是在將代理人指向一個檔案系統。
 
-*Usage:*
+*使用範例：*
 
-"Why isn't it picking up my AGENTS.md?"
+「它為什麼沒有讀到我的 AGENTS.md？」
 
-"It's running against a different filesystem — the [sandbox](./Sandbox.md) mounted the parent dir, not the project root. Repoint the harness."
+「它跑的是另一個檔案系統——[沙盒](./Sandbox.md)掛載了上層目錄，而不是專案根目錄。重新指定駕馭的路徑。」

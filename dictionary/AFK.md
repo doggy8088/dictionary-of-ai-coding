@@ -3,14 +3,14 @@ aliases:
   - away from keyboard
   - AFK (away from keyboard)
 ---
-A working pattern where the user kicks off a [session](./Session.md) and leaves the [agent](./Agent.md) to run unattended. The throughput multiplier of AI coding — many AFK sessions can run in parallel while you sleep, eat, or work on something else. Usually requires a permissive [permission mode](./Permission%20mode.md) plus [sandboxing](./Sandbox.md) to be safe.
+一種工作模式，使用者啟動一個[工作階段](./Session.md)後便離開，讓[代理人](./Agent.md)（Agent）無人監督地獨立執行。這是 AI 編碼的吞吐量倍增器——在你睡覺、吃飯或處理其他事情時，可以同時並行執行多個 AFK 工作階段。通常需要寬鬆的[權限模式](./Permission%20mode.md)（Permission Mode）搭配[沙盒](./Sandbox.md)（Sandbox）機制才能安全運作。
 
-*Avoid:* "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK is the load-bearing fact: the user isn't watching.
+*避免使用：*「背景代理人」——這個說法以機器為中心（「在背景執行」），而非以人的行為模式為中心（「使用者已離開」）。AFK 的核心事實是：使用者不在監看。
 
-*Usage:*
+*使用範例：*
 
-"I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
+「我要讓這個工作 AFK 執行——三個沙盒化的代理人負責重構，早上再來審查 PR。」
 
-"[Bypass permissions](./Agent%20mode.md)?"
+「要[繞過權限](./Agent%20mode.md)嗎？」
 
-"Yeah, read-only [filesystem](./Filesystem.md), no network."
+「對，唯讀[檔案系統](./Filesystem.md)，不連外網。」
