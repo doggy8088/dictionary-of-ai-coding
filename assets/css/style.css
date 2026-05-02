@@ -105,12 +105,13 @@ summary:focus-visible {
 
 .site-hero {
   position: relative;
-  padding: clamp(28px, 4vw, 48px);
+  padding: clamp(24px, 3vw, 38px);
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 40px;
   background:
-    radial-gradient(circle at 78% 68%, color-mix(in srgb, var(--accent), transparent 66%), transparent 22rem),
+    radial-gradient(circle at 76% 70%, color-mix(in srgb, var(--accent), transparent 84%), transparent 20rem),
+    radial-gradient(circle at 88% 84%, color-mix(in srgb, var(--accent), transparent 92%), transparent 18rem),
     linear-gradient(135deg, color-mix(in srgb, var(--surface-solid), transparent 10%), transparent),
     var(--surface);
   box-shadow: var(--shadow);
@@ -120,17 +121,18 @@ summary:focus-visible {
 
 .site-hero::after {
   position: absolute;
-  right: clamp(18px, 3vw, 36px);
-  top: clamp(18px, 3vw, 30px);
-  bottom: clamp(18px, 3vw, 30px);
-  width: min(34vw, 340px);
-  aspect-ratio: 1;
+  right: clamp(28px, 4vw, 52px);
+  top: clamp(28px, 4vw, 42px);
+  width: min(36vw, 520px);
+  height: min(74%, 420px);
   content: "";
-  border: 1px solid var(--border);
-  border-radius: 36px;
+  border: 1px solid color-mix(in srgb, var(--border), transparent 32%);
+  border-radius: 42px;
   background:
-    radial-gradient(circle at 28% 72%, var(--accent-soft), transparent 60%),
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-solid), transparent 96%), transparent);
+    linear-gradient(90deg, transparent 0 12%, color-mix(in srgb, var(--border), transparent 35%) 12% 13%, transparent 13%),
+    radial-gradient(circle at 54% 72%, color-mix(in srgb, var(--accent), transparent 90%), transparent 48%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-solid), transparent 98%), transparent);
+  opacity: 0.9;
 }
 
 .hero-top {
@@ -140,7 +142,7 @@ summary:focus-visible {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-bottom: clamp(28px, 4vw, 48px);
+  margin-bottom: clamp(18px, 2vw, 24px);
 }
 
 .hero-kicker {
@@ -161,14 +163,14 @@ summary:focus-visible {
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: clamp(28px, 4vw, 52px);
+  gap: clamp(20px, 3vw, 34px);
   align-items: center;
 }
 
 .hero-content {
   min-width: 0;
   max-width: 40rem;
-  padding: clamp(20px, 2vw, 32px) 0 clamp(12px, 1vw, 20px);
+  padding: clamp(8px, 1vw, 16px) 0 clamp(4px, 0.6vw, 10px);
   padding-right: clamp(8px, 1vw, 12px);
 }
 
@@ -184,62 +186,62 @@ summary:focus-visible {
 
 .hero-side {
   position: relative;
-  min-height: clamp(360px, 38vw, 620px);
+  min-height: clamp(250px, 26vw, 360px);
 }
 
 .hero-art {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  border-radius: 30px;
-  border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-  background:
-    linear-gradient(180deg, rgba(32, 28, 25, 0.18), rgba(32, 28, 25, 0.04)),
-    color-mix(in srgb, var(--bg-strong), transparent 12%);
+  overflow: visible;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
   pointer-events: none;
 }
 
 .hero-art::before {
   position: absolute;
-  inset: 4% -16% -22% 12%;
+  inset: -6% -12% -24% 4%;
   content: "";
   border: 1px solid color-mix(in srgb, var(--accent), transparent 64%);
   border-radius: 999px;
-  background: radial-gradient(circle, var(--accent-soft), transparent 72%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent), transparent 86%), transparent 74%);
   filter: blur(1px);
+  opacity: 0.55;
 }
 
 .hero-art::after {
   position: absolute;
-  inset: auto -14% -18% 24%;
-  height: 72%;
+  inset: auto -18% -32% 16%;
+  width: 92%;
+  height: 78%;
   content: "";
   background:
-    radial-gradient(circle at 42% 62%, color-mix(in srgb, var(--accent), transparent 24%), transparent 15rem),
-    radial-gradient(circle at 58% 52%, color-mix(in srgb, var(--surface-solid), transparent 68%), transparent 11rem);
-  filter: blur(14px);
-  opacity: 0.9;
+    radial-gradient(circle at 44% 58%, color-mix(in srgb, var(--accent), transparent 58%), transparent 13rem),
+    radial-gradient(circle at 58% 42%, color-mix(in srgb, var(--surface-solid), transparent 42%), transparent 11rem);
+  filter: blur(22px);
+  opacity: 0.52;
 }
 
 .hero-art img {
   position: absolute;
-  right: -22%;
-  bottom: -16%;
-  width: 154%;
+  right: -28%;
+  bottom: -34%;
+  width: 150%;
   max-width: none;
   height: auto;
   object-fit: cover;
   object-position: right bottom;
-  opacity: 0.9;
-  mix-blend-mode: screen;
-  filter: saturate(0.96) brightness(1.02);
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  filter: saturate(0.72) brightness(1.02);
 }
 
 .eyebrow {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.85rem;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -249,19 +251,19 @@ summary:focus-visible {
   max-width: none;
   margin: 0;
   font-family: var(--display-font);
-  font-size: clamp(2.1rem, 4.1vw, 4.25rem);
+  font-size: clamp(2rem, 3.6vw, 3.8rem);
   font-weight: 700;
-  line-height: 1.02;
+  line-height: 1.03;
   letter-spacing: -0.045em;
   text-wrap: pretty;
 }
 
 .hero-copy {
   max-width: 31rem;
-  margin: clamp(20px, 2.8vw, 30px) 0 0;
+  margin: clamp(14px, 1.8vw, 22px) 0 0;
   color: var(--muted);
-  font-size: clamp(1.02rem, 0.72vw + 0.92rem, 1.22rem);
-  line-height: 1.68;
+  font-size: clamp(1rem, 0.52vw + 0.94rem, 1.12rem);
+  line-height: 1.64;
 }
 
 .theme-toggle {
@@ -293,6 +295,48 @@ summary:focus-visible {
     radial-gradient(circle at 62% 38%, var(--surface-solid) 0 26%, transparent 27%),
     linear-gradient(135deg, var(--accent), var(--link));
   box-shadow: inset 0 0 0 1px var(--border);
+}
+
+:root[data-theme="dark"] .site-hero {
+  background:
+    radial-gradient(circle at 76% 70%, color-mix(in srgb, var(--accent), transparent 72%), transparent 22rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--surface-solid), transparent 10%), transparent),
+    var(--surface);
+}
+
+:root[data-theme="dark"] .hero-art {
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
+  background:
+    linear-gradient(180deg, rgba(32, 28, 25, 0.18), rgba(32, 28, 25, 0.04)),
+    color-mix(in srgb, var(--bg-strong), transparent 12%);
+}
+
+:root[data-theme="dark"] .hero-art::before {
+  inset: 4% -16% -22% 12%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 72%);
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .hero-art::after {
+  inset: auto -14% -18% 24%;
+  width: auto;
+  height: 72%;
+  background:
+    radial-gradient(circle at 42% 62%, color-mix(in srgb, var(--accent), transparent 24%), transparent 15rem),
+    radial-gradient(circle at 58% 52%, color-mix(in srgb, var(--surface-solid), transparent 68%), transparent 11rem);
+  filter: blur(14px);
+  opacity: 0.9;
+}
+
+:root[data-theme="dark"] .hero-art img {
+  right: -22%;
+  bottom: -16%;
+  width: 154%;
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  filter: saturate(0.96) brightness(1.02);
 }
 
 .content-card {
@@ -452,13 +496,13 @@ blockquote p + p {
   }
 
   .hero-art {
-    min-height: 260px;
+    min-height: 180px;
   }
 
   .hero-art img {
-    right: -10%;
-    bottom: -16%;
-    width: 128%;
+    right: -12%;
+    bottom: -28%;
+    width: 122%;
     object-position: center 56%;
   }
 
@@ -498,7 +542,6 @@ blockquote p + p {
   }
 
   .hero-art {
-    min-height: 220px;
-    border-radius: 24px;
+    min-height: 150px;
   }
 }
