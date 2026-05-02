@@ -2,8 +2,10 @@
 
 *避免使用：*「AI 審查」、「代理人審查」——過於模糊，無法與執行工作的代理人本身區分。
 
-*使用範例：*
+*情境例句：*
 
 「[AFK](./AFK.md) 執行產出了太多劣質 PR。」
+"We're getting too many bad PRs from the [AFK](./AFK.md) runs."
 
 「在合併前加一個自動化審查步驟——使用不同模型、獨立的系統提示詞，範圍鎖定在安全性和介面合約的變更。」
+"Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."

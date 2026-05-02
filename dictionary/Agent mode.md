@@ -9,12 +9,16 @@ aliases:
 
 *廠商術語：* Claude Code 將這些稱為「permission modes」（權限模式），Codex 稱為「approval modes」（核准模式）——兩者均早於行為捆綁概念的出現。
 
-*使用範例：*
+*情境例句：*
 
 「它一直修改檔案，但我只想要一份計劃。」
+"It keeps editing files when I just want a plan."
 
 「切換到計劃模式——它會封鎖寫入，並保持在研究階段。」
+"Switch to plan mode — it'll block writes and stay in research."
 
 「那之後的 [AFK](./AFK.md) 執行呢？」
+"What about for the [AFK](./AFK.md) run later?"
 
 「繞過模式，但只在[沙盒](./Sandbox.md)（Sandbox）裡用。」
+"Bypass mode, but only inside the [sandbox](./Sandbox.md)."

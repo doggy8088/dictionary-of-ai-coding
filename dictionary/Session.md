@@ -1,7 +1,9 @@
 與[代理人](./Agent.md)進行的單次有界互動。從空白開始，逐漸累積訊息、[工具結果](./Tool%20result.md)和讀取的檔案，並在[清除](./Clearing.md)、關閉或[壓縮摘要](./Compaction.md)成新工作階段時結束。工作階段是*填充*[上下文視窗](./Context%20window.md)的東西：如果上下文視窗是個盒子，工作階段就是慢慢將它填滿的內容。超出單個上下文視窗容量的工作，必須拆分到多個工作階段中進行。
 
-*使用範例：*
+*情境例句：*
 
 「一個工作階段能跑多久才不至於崩潰？」
+"How long can one session run before it falls apart?"
 
 「取決於工作的性質——一次專注的重構保持清晰的時間比開放式研究長得多。一旦工作階段過於龐大，就[交接](./Handoff.md)或壓縮摘要，不要硬撐。」
+"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](./Handoff.md) or compact, don't push through."

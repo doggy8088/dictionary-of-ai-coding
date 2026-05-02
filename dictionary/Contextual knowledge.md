@@ -4,8 +4,10 @@
 
 *避免使用：*「工作記憶體」——情境知識是當下在視窗裡的內容；[記憶系統](./Memory%20system.md)（Memory System）則是將跨工作階段的內容帶入其中的機制。兩者的尺度不同，不能混淆。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼我貼了 API 文件它就能對，不貼就亂說？」
+"Why does it nail the API when I paste the docs and fabricate it when I don't?"
 
 「貼了文件後，它讀的是情境知識——像在翻書查答案。沒貼的時候依賴的是參數化知識，那些少見的端點就會模糊。」
+"With the docs in, it's contextual knowledge — reading off the page. Without, it's parametric and the rare endpoints blur."

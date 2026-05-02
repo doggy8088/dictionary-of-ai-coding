@@ -2,8 +2,10 @@
 
 *避免使用：*「AI」、「機器人」（too vague — 這些說法過於模糊，無法區分你指的是模型參數本身，還是經過駕馭化的整體系統）。
 
-*使用範例：*
+*情境例句：*
 
 「你用哪個代理人來跑這次的遷移作業？」
+"Which agent are you using for the migration?"
 
 「本地用 Claude Code，UI 部分用 Cursor——底層是同一個模型，駕馭不同。」
+"Claude Code locally, Cursor for the UI work — same model underneath, different harnesses."

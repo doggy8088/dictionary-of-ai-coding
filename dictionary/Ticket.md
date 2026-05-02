@@ -1,7 +1,9 @@
 一份劃定單一[工作階段](./Session.md)工作範圍的[交接文件](./Handoff%20artifact.md)（Handoff Artifact）。可以獨立存在，也可以作為[規格書](./Spec.md)（Spec）的子項之一。任務單可以阻塞或被同層任務單阻塞，因此工作順序從它們的相依關係圖中自然浮現，而非依賴線性計劃。
 
-*使用範例：*
+*情境例句：*
 
 「這次遷移的規格書要從哪裡開始？」
+"Where do I start on the migration spec?"
 
 「看任務單圖——Schema 變更阻塞回填，回填阻塞 API 切換。挑一個沒有前置依賴的葉節點，然後跑一個工作階段處理它。」
+"Look at the ticket graph — the schema change blocks the backfill, the backfill blocks the API switch. Pick a leaf and run a session on it."

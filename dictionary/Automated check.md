@@ -2,12 +2,16 @@
 
 *避免使用：*「回饋迴路」、「反壓」——這兩個詞把自動化檢查和[審查](./Automated%20review.md)混為一談。*避免使用：*「測試」——測試是自動化檢查的一種，但並非所有自動化檢查都是測試。
 
-*使用範例：*
+*情境例句：*
 
 「代理人在 [AFK](./AFK.md) 執行時一直交出有問題的程式碼。」
+"The agent keeps shipping broken code in the [AFK](./AFK.md) runs."
 
 「[沙盒](./Sandbox.md)裡接了哪些自動化檢查？」
+"What automated checks are wired into the [sandbox](./Sandbox.md)?"
 
 「只有單元測試。」
+"Just the unit tests."
 
 「加上型別檢查和靜態分析——它在 PR 送出之前就能自行從這些結果修正。」
+"Add typecheck and lint — it'll self-correct from those before the PR ever lands."

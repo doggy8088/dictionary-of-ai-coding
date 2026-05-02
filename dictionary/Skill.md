@@ -2,8 +2,10 @@
 
 *避免使用：*「[工具](./Tool.md)」——工具是代理人*呼叫*的東西；技能（Skill）是代理人*讀取*的指令。
 
-*使用範例：*
+*情境例句：*
 
 「部署操作手冊要放哪裡？」
+"Where should I put the deploy runbook?"
 
 「作為一個技能——代理人只在任務涉及部署時才載入它。放在 [AGENTS.md](./AGENTS.md.md) 裡，每個[對話輪次](./Turn.md)就要為一個每週只用一次的東西消耗[詞元](./Token.md)。」
+"As a skill — the agent loads it only when the task involves deploys. In [AGENTS.md](./AGENTS.md.md) it'd burn [tokens](./Token.md) on every [turn](./Turn.md) for something we use weekly."

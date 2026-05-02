@@ -4,7 +4,7 @@
   Regenerate: npm run generate
 -->
 
-# AI Coding 詞彙字典
+# AI Coding 術語辭典
 
 **AI Coding 常常讓人感覺是專家的專利**。一堆沒有解釋的術語。莫名其妙的失敗。帳單金額與實際工作量對不上。
 
@@ -130,41 +130,49 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 即[參數](#parameters)（Parameters）本身。[無狀態](#stateless)（Stateless）——執行[下一個詞元預測](#next-token-prediction)，僅此而已。「Claude Opus 4.7」和「GPT-5」都是模型。模型本身無法做任何代理人該做的事；它必須被[駕馭化](#harness)（Harnessed）。
 
-*使用範例：*
+*情境例句：*
 
 「規劃步驟要不要把模型從 Sonnet 換成 Opus？」
+"Should we switch the model from Sonnet to Opus for the planning step?"
 
 「試試看吧——但這個任務大部分工作是駕馭在做。如果[系統提示詞](#system-prompt)和[工具](#tool)設定不對，換模型也沒用。」
+"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](#system-prompt) and [tools](#tool) are wrong."
 
 ### Parameters
 
 [模型](#model)內部的數字——通常有數十億個——在[訓練](#training)過程中調整而成。模型「知道」的一切都存在於其中。訓練設定它們；[推論](#inference)時保持不變地使用它們。又稱*權重*（weights）。
 
-*使用範例：*
+*情境例句：*
 
 「我們可以在我們的程式碼庫上對它進行微調嗎？」
+"Can we fine-tune it on our codebase?"
 
 「那會更新參數——之後就是一個不同的模型了。對單一專案而言，把程式碼庫作為[脈絡](#context)載入幾乎永遠比重新訓練便宜。」
+"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as [context](#context) than to retrain."
 
 ### Training
 
 設定[模型](#model)[參數](#parameters)（Parameters）的過程——將模型暴露於大量文字，並調整參數以改善[下一個詞元預測](#next-token-prediction)的準確性。由[模型供應商](#model-provider)（Model Provider）執行的一次性、高成本過程。涵蓋預訓練（pre-training，主要的大規模執行）和後訓練（post-training，後續的精煉，如指令遵循和安全性校準）；在本詞彙表的層次，這個區別並不重要。
 
-*使用範例：*
+*情境例句：*
 
 「我們能讓它學習我們的內部 API 嗎？」
+"Can we get it to know our internal API?"
 
 「不能透過訓練——那是模型供應商執行的、耗時數月的過程。改為把 API 文件載入[脈絡](#context)，那才是你實際能用的槓桿。」
+"Not via training — that's a months-long process by the model provider. Load the API docs into [context](#context) instead, that's the lever you actually have."
 
 ### Inference
 
 執行已訓練好的[模型](#model)以產生輸出——每次[模型供應商請求](#model-provider-request)（Model Provider Request）都在做這件事。[參數](#parameters)（Parameters）維持不變；模型只是對給定的[脈絡](#context)進行[下一個詞元預測](#next-token-prediction)。相較於[訓練](#training)成本低廉，但按[詞元](#token)計費，是使用模型的主要費用來源。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼帳單會隨使用量計費，而不是固定授權費？」
+"Why does the bill scale with usage instead of being a flat license?"
 
 「你在為推論（Inference）付費——每次模型供應商請求都在供應商的硬體上執行模型。訓練早已完成，但推論費用按請求累計，而且一個[對話輪次](#turn)在呼叫[工具](#tool)時可能擴展成許多次請求。」
+"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](#turn) can expand into many requests when [tools](#tool) are called."
 
 ### Token
 
@@ -172,71 +180,85 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「字詞」——詞元邊界與字詞邊界並不吻合，而每秒詞元數 / 每美元詞元數才是真正重要的計量單位。
 
-*使用範例：*
+*情境例句：*
 
 「這個提示詞會有多大？」
+"How big is this prompt going to be?"
 
 「用 tokenizer 跑一下——Schema 本身很緊湊，但 JSON 的鍵名很怪，所以會拆分成比你預期更多的詞元。」
+"Run it through the tokenizer — the schema's compact but the JSON keys are weird, so they'll split into more tokens than you think."
 
 ### Next-token prediction
 
 [模型](#model)實際上做的事。給定一個[脈絡](#context)，它抽樣出下一個[詞元](#token)，將其附加上去，然後再執行一遍。所有輸出——一個句子、一個[工具呼叫](#tool-call)、一個上千行的檔案——都是逐個詞元建構起來的。模型沒有其他運作模式。
 
-*使用範例：*
+*情境例句：*
 
 「[代理人](#agent)是怎麼『決定』要呼叫一個工具的？」
+"How does the [agent](#agent) 'decide' to call a tool?"
 
 「它不是『決定』——一路到底都是下一個詞元預測（Next-Token Prediction）。工具呼叫不過是[駕馭](#harness)從輸出串流中解析出來的一個結構化字串。」
+"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](#harness) parses out of the output stream."
 
 ### Model provider
 
 為[模型](#model)提供[推論](#inference)（Inference）服務的機構。通常是遠端服務（Anthropic、OpenAI、Google），但也可以是本地部署——在自己機器上執行的 Ollama、LM Studio、llama.cpp。[駕馭](#harness)自身不執行模型；它向供應商發出請求。
 
-*使用範例：*
+*情境例句：*
 
 「我們能為這個隔離網路的客戶離線執行嗎？」
+"Can we run this offline for the air-gapped client?"
 
 「將模型供應商切換為本地供應商——在他們的機器上跑 Ollama 或 llama.cpp。駕馭不在乎，只是換了一個端點。」
+"Swap the model provider to a local one — Ollama or llama.cpp on their box. The harness doesn't care, it just hits a different endpoint."
 
 ### Harness
 
 圍繞[模型](#model)、將其轉化為[代理人](#agent)的一切：[工具](#tool)、[系統提示詞](#system-prompt)、[上下文視窗](#context-window)管理、權限設定、hooks。**Claude.ai** 和 **Claude Code** 執行的是同一個模型，行為卻大相徑庭，原因正是它們的駕馭不同。
 
-*使用範例：*
+*情境例句：*
 
 「同樣的模型，為什麼 Claude Code 會修改檔案，而 Claude.ai 只是回答問題？」
+"Same model, why is Claude Code editing files and Claude.ai just answering questions?"
 
 「駕馭不同——Claude Code 有[檔案系統](#filesystem)工具、不同的系統提示詞和權限層。模型不是變數所在。」
+"Different harnesses — Claude Code has [filesystem](#filesystem) tools, a different system prompt, and a permission layer. The model isn't the variable here."
 
 ### Model provider request
 
 從[駕馭](#harness)到[模型供應商](#model-provider)的一次往返。駕馭發送當前[脈絡](#context)；供應商回傳一個回應（一個[工具呼叫](#tool-call)或最終答案）。如果[代理人](#agent)呼叫[工具](#tool)，一條使用者訊息可能觸發許多次模型供應商請求——每個[工具結果](#tool-result)都會觸發另一次請求。
 
-*使用範例：*
+*情境例句：*
 
 「一個問題燒了四萬個[詞元](#token)？」
+"One question burned forty thousand [tokens](#token)?"
 
 「看看工具呼叫——十二次 grep、八次讀取、四次編輯。每個工具結果都會觸發另一次模型供應商請求，而整個[工作階段](#session)的前綴每次都要重新發送。」
+"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](#session) prefix re-sends every time."
 
 ### Input tokens
 
 [駕馭](#harness)（Harness）在每次[模型供應商請求](#model-provider-request)時發送的[詞元](#token)。計費費率低於[輸出詞元](#output-tokens)（Output Tokens）。
 
-*使用範例：*
+*情境例句：*
 
 「帳單很高，但[代理人](#agent)寫出的內容很少。」
+"Bill's high but the [agent](#agent)'s barely writing anything."
 
 「是輸入詞元（Input Tokens）的問題——每個[對話輪次](#turn)都重新發送整個[工作階段](#session)的歷史。沒有[前綴快取](#prefix-cache)（Prefix Cache）的話，每次請求都要重新為歷史記錄付費。」
+"It's the input tokens — every [turn](#turn) re-sends the whole [session](#session). Without the [prefix cache](#prefix-cache) you re-pay for the history each request."
 
 ### Output tokens
 
 [模型](#model)產生回傳的[詞元](#token)。計費費率高於[輸入詞元](#input-tokens)，因為產生輸出需要更多運算。
 
-*使用範例：*
+*情境例句：*
 
 「這次重構[工作階段](#session)燒信用額度燒得很兇，明明輸入很小。」
+"The refactor [session](#session) is burning through credit even though the inputs are small."
 
 「[代理人](#agent)在整檔重寫，而不是局部修補。輸出詞元（Output Tokens）的費率大約是輸入費率的五倍——讓它只輸出差異（edits），帳單就會降下來。」
+"[Agent](#agent)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
 
 ### Prefix cache
 
@@ -244,21 +266,25 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 任何改變前綴的操作（重新排列檔案順序、在[工作階段](#session)中途改寫系統提示詞、在頂部注入時間戳記）都會從該點起使快取失效，之後的請求以全額[輸入詞元](#input-tokens)費率計費。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼帳單在工作階段中途突然飆高？」
+"Why did the bill spike halfway through the session?"
 
 「[駕馭](#harness)開始在每個[對話輪次](#turn)把當前時間注入系統提示詞。前綴快取在第一個改變的詞元處就失效了，所以此後每次請求都以全額費率計費。」
+"[Harness](#harness) started injecting the current time into the system prompt every [turn](#turn). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
 
 ### Cache tokens
 
 [供應商](#model-provider)（Model Provider）從先前的[模型供應商請求](#model-provider-request)（Model Provider Request）快取下來的[輸入詞元](#input-tokens)（Input Tokens），不必重新處理。當連續的請求共享同一個前綴時，供應商透過其[前綴快取](#prefix-cache)（Prefix Cache）重複使用先前的運算結果，並以大幅折扣的費率計費快取部分。這是讓長[工作階段](#session)在成本上可行的關鍵機制——沒有它，每個[對話輪次](#turn)都要重新支付整段歷史的費用。
 
-*使用範例：*
+*情境例句：*
 
 「長工作階段的費用很驚人——一次重構花了八美元。」
+"Cost on long sessions is brutal — eight bucks for a refactor."
 
 「看看快取詞元（Cache Tokens）。如果[駕馭](#harness)在輪次之間重新排列[系統提示詞](#system-prompt)或檔案，前綴就會失效，每次請求都要以全額輸入詞元費率重新計費。」
+"Check the cache tokens. If the [harness](#harness) is reordering the [system prompt](#system-prompt) or files between turns, the prefix breaks and you re-pay full input rate every request."
 
 ## Section 2 — 工作階段、上下文視窗與對話輪次
 
@@ -266,21 +292,25 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 不攜帶任何資訊向前傳遞。[模型](#model)在[模型供應商請求](#model-provider-request)（Model Provider Requests）之間是無狀態的——每次請求重新發送完整的[上下文視窗](#context-window)，因為模型無法看到其他任何東西。[代理人](#agent)預設在[工作階段](#session)之間是無狀態的：新工作階段從空白開始，沒有任何先前工作階段的痕跡。與[有狀態](#stateful)（Stateful）相對。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼每次我[清除](#clearing)之後它就忘記了那個慣例？」
+"Why does it forget the convention every time I [clear](#clearing)?"
 
 「模型是無狀態的——新工作階段從空白開始。如果你想保留它，就把它寫入 [AGENTS.md](#agentsmd) 或一個[駕馭](#harness)在工作階段開始時會載入的記憶檔案。」
+"The model's stateless — the new session starts empty. If you want it carried, write it to [AGENTS.md](#agentsmd) or a memory file the [harness](#harness) loads at session start."
 
 ### Context
 
 [代理人](#agent)目前可以存取的相關資訊。這是一個抽象名詞——不是模型看到的原始輸入（那是[上下文視窗](#context-window)），也不是持續累積的對話歷史（那是[工作階段](#session)），而是*代理人當下對任務而言切實可用的知識*。「將某樣東西載入脈絡」意味著把它納入這個集合；「脈絡工程」（Context Engineering）是策劃和管理這個集合的學問。
 
-*使用範例：*
+*情境例句：*
 
 「它不斷捏造型別裡根本不存在的欄位。」
+"It keeps inventing fields that aren't in the type."
 
 「型別檔沒有進脈絡——它在讀呼叫端然後猜。先把定義讀進來。」
+"The type file isn't in context — it's reading the call sites and guessing. Read the definition in first."
 
 ### Context window
 
@@ -288,21 +318,25 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「記憶體」——上下文視窗是工作狀態，不會跨[工作階段](#session)持久保存。[記憶體](#memory-system)（Memory）是一個獨立概念，架構在其上層。
 
-*使用範例：*
+*情境例句：*
 
 「我可以把整個 monorepo 貼到提示詞裡嗎？」
+"Can I just paste the whole monorepo into the prompt?"
 
 「上下文視窗有 20 萬個[詞元](#token)——大概只是整個代碼庫的五分之一。選取任務會觸及的檔案，把其餘的留在[工具呼叫](#tool-call)後面按需載入。」
+"The context window's 200k [tokens](#token) — that's maybe a fifth of the repo. Pick the files the task touches, leave the rest behind a [tool call](#tool-call)."
 
 ### Stateful
 
 攜帶資訊向前傳遞。一個[工作階段](#session)在[對話輪次](#turn)之間是有狀態的——[脈絡](#context)在工作階段執行期間持續累積，這正是為何長工作階段會漂入[混沌區](#smart-zone)。代理人可以透過加入[記憶系統](#memory-system)（Memory System）跨**工作階段**保有狀態——將資訊持久化到[環境](#environment)，並在未來工作階段開始時重新載入。[模型](#model)永遠不是有狀態的；任何表面上的連續性都是[駕馭](#harness)重新輸入脈絡的結果。與[無狀態](#stateless)（Stateless）相對。
 
-*使用範例：*
+*情境例句：*
 
 「它記得我昨天的偏好設定——這表示模型學到了嗎？」
+"It remembered my preferences from yesterday — does that mean the model learned them?"
 
 「沒有，代理人是有狀態的，因為駕馭把設定寫進了記憶檔案並在工作階段開始時重新載入。模型本身對昨天的事一無所知。」
+"No, the agent's stateful because the harness wrote them to a memory file and reloaded them at session start. The model itself saw nothing of yesterday."
 
 ### Agent
 
@@ -310,41 +344,49 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「AI」、「機器人」（too vague — 這些說法過於模糊，無法區分你指的是模型參數本身，還是經過駕馭化的整體系統）。
 
-*使用範例：*
+*情境例句：*
 
 「你用哪個代理人來跑這次的遷移作業？」
+"Which agent are you using for the migration?"
 
 「本地用 Claude Code，UI 部分用 Cursor——底層是同一個模型，駕馭不同。」
+"Claude Code locally, Cursor for the UI work — same model underneath, different harnesses."
 
 ### System prompt
 
 [駕馭](#harness)在每次[模型供應商請求](#model-provider-request)前都會加入的指令——[代理人](#agent)的常駐任務說明書：它是誰、如何行事、可以呼叫哪些[工具](#tool)、應遵循哪些慣例。通常在整個[工作階段](#session)期間保持穩定。
 
-*使用範例：*
+*情境例句：*
 
 「兩個駕馭、同一個[模型](#model)，同樣的提示詞行為卻截然不同。」
+"Two harnesses, same [model](#model), totally different behavior on the same prompt."
 
 「系統提示詞不同。一個調整為精簡的程式碼編輯，另一個調整為解釋說明——差異就在那裡，在你的訊息到達之前就已決定了。」
+"Different system prompts. One's tuned for terse code edits, the other for explaining — that's where the divergence lives, before your message even arrives."
 
 ### Session
 
 與[代理人](#agent)進行的單次有界互動。從空白開始，逐漸累積訊息、[工具結果](#tool-result)和讀取的檔案，並在[清除](#clearing)、關閉或[壓縮摘要](#compaction)成新工作階段時結束。工作階段是*填充*[上下文視窗](#context-window)的東西：如果上下文視窗是個盒子，工作階段就是慢慢將它填滿的內容。超出單個上下文視窗容量的工作，必須拆分到多個工作階段中進行。
 
-*使用範例：*
+*情境例句：*
 
 「一個工作階段能跑多久才不至於崩潰？」
+"How long can one session run before it falls apart?"
 
 「取決於工作的性質——一次專注的重構保持清晰的時間比開放式研究長得多。一旦工作階段過於龐大，就[交接](#handoff)或壓縮摘要，不要硬撐。」
+"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](#handoff) or compact, don't push through."
 
 ### Turn
 
 一條使用者訊息，加上[代理人](#agent)在回應中所做的一切，直到它將控制權還給使用者為止。包含一次或多次[模型供應商請求](#model-provider-request)——如果代理人呼叫[工具](#tool)，則可能包含許多次。一個澄清問題結束這個輪次；你的回覆開始下一個。層級關係是[工作階段](#session) **> 對話輪次（Turn）> 模型供應商請求**。
 
-*使用範例：*
+*情境例句：*
 
 「一個輪次花了兩分鐘？」
+"One turn took two minutes?"
 
 「它在那個輪次裡發出了十四次[工具呼叫](#tool-call)——每次都是一個獨立的模型供應商請求。延遲不斷疊加，直到代理人最終把控制權還給你。」
+"It made fourteen [tool calls](#tool-call) inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
 
 ## Section 3 — 工具與環境
 
@@ -354,71 +396,85 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「環境」來指稱執行時期或駕馭本身——駕馭是外殼，環境是工作空間。
 
-*使用範例：*
+*情境例句：*
 
 「代理人看不到 staging 資料庫的 Schema。」
+"The agent can't see the staging DB schema."
 
 「把它接入環境——給它一個只對 staging 具唯讀權限的 `psql` [工具](#tool)。駕馭沒問題，只是它沒有任何東西可以作用。」
+"Wire it into the environment — give it a `psql` [tool](#tool) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
 
 ### Filesystem
 
 [代理人](#agent)讀取、寫入、並在其中執行程式的檔案與目錄樹——coding agent 預設的[環境](#environment)類型。[AGENTS.md](#agentsmd)、[技能](#skill)（Skills）、原始碼、建置腳本和[工具](#tool)配置，全都存放在檔案系統中。當一個[駕馭](#harness)「從你的專案啟動」時，它就是在將代理人指向一個檔案系統。
 
-*使用範例：*
+*情境例句：*
 
 「它為什麼沒有讀到我的 AGENTS.md？」
+"Why isn't it picking up my AGENTS.md?"
 
 「它跑的是另一個檔案系統——[沙盒](#sandbox)掛載了上層目錄，而不是專案根目錄。重新指定駕馭的路徑。」
+"It's running against a different filesystem — the [sandbox](#sandbox) mounted the parent dir, not the project root. Repoint the harness."
 
 ### Tool
 
 [駕馭](#harness)暴露給[代理人](#agent)可以呼叫的函式——Read（讀取）、Write（寫入）、Bash（執行指令）、Search（搜尋）。工具是代理人感知並作用於[環境](#environment)的方式：代理人除了透過[工具結果](#tool-result)之外無法感知環境，除了透過[工具呼叫](#tool-call)之外無法改變環境。每次工具呼叫都需要額外一次[模型供應商請求](#model-provider-request)，因為結果必須返回給模型，模型才能決定下一步。
 
-*使用範例：*
+*情境例句：*
 
 「代理人可以直接查詢 staging 資料庫嗎？」
+"Can the agent query staging directly?"
 
 「在駕馭裡加一個 `psql` 工具，限定只對 staging 具唯讀權限。沒有對應工具的話，代理人對[檔案系統](#filesystem)之外的一切都是盲的。」
+"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the [filesystem](#filesystem)."
 
 ### Tool call
 
 [模型](#model)輸出的、指定某個[工具](#tool)及其參數的內容——這不過是結構化文字。它本身不做任何事；[駕馭](#harness)必須讀取它並執行。由模型在一次[模型供應商請求](#model-provider-request)中產生。
 
-*使用範例：*
+*情境例句：*
 
 「它說它跑了測試，但檔案的時間戳記沒有變。」
+"It said it ran the tests but the file timestamps haven't changed."
 
 「看一下對話紀錄——它是真的發出了工具呼叫，還是只是描述跑了測試？模型產生呼叫指令，但如果駕馭沒有執行它，什麼都沒發生。」
+"Look at the transcript — did it actually emit a tool call, or just describe running them? The model produces the call, but if the harness didn't execute it, nothing happened."
 
 ### Tool result
 
 [駕馭](#harness)執行[工具呼叫](#tool-call)後回傳的內容——檔案內容、指令輸出、錯誤訊息。這是[代理人](#agent)感知[環境](#environment)的唯一窗口。在*下一次*[模型供應商請求](#model-provider-request)中傳回[模型](#model)，模型才能決定如何處理它。工具呼叫和工具結果是同一次交換的兩端，都發生在同一個[對話輪次](#turn)之內。
 
-*使用範例：*
+*情境例句：*
 
 「它在推論這個檔案的內容時，好像把它當成空的。」
+"It's reasoning about the file like it's empty."
 
 「工具結果回傳的是權限拒絕，不是檔案內容。模型只看到了錯誤字串——它沒有任何其他窗口可以看見這個檔案。」
+"The tool result came back as a permission denial, not the contents. The model only saw the error string — it has no other window onto the file."
 
 ### Permission request
 
 [駕馭](#harness)在執行未預先核准的[工具呼叫](#tool-call)前，向使用者展示的提示。[模型](#model)產生工具呼叫；駕馭不立即執行，而是暫停並詢問使用者。核准則執行；拒絕則駕馭將拒絕結果作為[工具結果](#tool-result)回報給模型。這是駕馭讓人類加入[迴圈](#human-in-the-loop)以監督風險或敏感操作的機制。
 
-*使用範例：*
+*情境例句：*
 
 「它被一個權限請求卡住十分鐘了——我開會去了。」
+"It's been blocked on a permission request for ten minutes — I was in a meeting."
 
 「這就是人在迴圈的代價。預先核准安全的[工具](#tool)，讓請求只在真正有風險的操作上觸發。」
+"That's the cost of human-in-the-loop. Pre-approve the safe [tools](#tool) so the request only fires on the actually-risky calls."
 
 ### Permission mode
 
 [代理人模式](#agent-mode)（Agent Mode）中負責權限把關的切片——哪些[工具呼叫](#tool-call)會觸發[權限請求](#permission-request)（Permission Request），哪些會自動執行。這是模式系統的原始用途，後來[駕馭](#harness)才開始在其上捆綁行為指令。
 
-*使用範例：*
+*情境例句：*
 
 「它每次 grep 都暫停——[AFK](#afk) 執行完全被卡死了。」
+"It paused on every grep — totally killed the [AFK](#afk) run."
 
 「放寬唯讀[工具](#tool)的權限模式，保留對寫入和 shell 操作的提示。研究型[工作階段](#session)裡大多數的權限請求都是雜訊。」
+"Loosen the permission mode for read-only [tools](#tool), keep prompting on writes and shell. Most permission requests on a research [session](#session) are noise."
 
 ### Agent mode
 
@@ -426,25 +482,31 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *廠商術語：* Claude Code 將這些稱為「permission modes」（權限模式），Codex 稱為「approval modes」（核准模式）——兩者均早於行為捆綁概念的出現。
 
-*使用範例：*
+*情境例句：*
 
 「它一直修改檔案，但我只想要一份計劃。」
+"It keeps editing files when I just want a plan."
 
 「切換到計劃模式——它會封鎖寫入，並保持在研究階段。」
+"Switch to plan mode — it'll block writes and stay in research."
 
 「那之後的 [AFK](#afk) 執行呢？」
+"What about for the [AFK](#afk) run later?"
 
 「繞過模式，但只在[沙盒](#sandbox)（Sandbox）裡用。」
+"Bypass mode, but only inside the [sandbox](#sandbox)."
 
 ### Sandbox
 
 [代理人](#agent)在其中執行的隔離[環境](#environment)——一個容器、虛擬機、臨時[檔案系統](#filesystem)或受限權限的 shell。限制代理人操作的影響範圍：即使代理人執行了破壞性指令或下載了惡意內容，損害也被控制在沙盒之內。這是讓 [AFK](#afk) 工作模式在實務上可行的安全基礎。
 
-*使用範例：*
+*情境例句：*
 
 「我想讓它在繞過權限模式下跑一夜，但又擔心風險。」
+"I want to let it run [bypass-permissions](#agent-mode) overnight but I'm not ready for that."
 
 「把它放進沙盒（Sandbox）——全新容器、不掛載任何憑證、不開外網。最壞的情況是它毀掉自己的檔案系統，然後你丟棄那個容器就好了。」
+"Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."
 
 ## Section 4 — 幻覺及其成因
 
@@ -457,35 +519,43 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「幻覺」作為「錯誤」的代名詞——不指明是哪種類型，這個詞就沒有任何診斷價值。
 
-*使用範例：*
+*情境例句：*
 
 「它幻覺出了 Schema 上一個 `parseAsync` 方法。」
+"It hallucinated a `parseAsync` method on the schema."
 
 「是事實性還是忠實性幻覺？」
+"Factuality or faithfulness?"
 
 「那個方法在我貼的文件裡有——它只是在第四十個[對話輪次](#turn)後停止讀那份文件了。」
+"The method exists in the docs I pasted — it just stopped reading them after [turn](#turn) forty."
 
 「那就是忠實性幻覺。壓縮摘要並重新載入，不用再加更多文件了。」
+"Faithfulness then. Compact and reload, don't bother adding more docs."
 
 ### Parametric knowledge
 
 [模型](#model)從[訓練](#training)中「學到」的知識，儲存在其[參數](#parameters)中。在訓練時凍結——模型既看不到自己的參數，也無法更新它們。資訊在壓縮時會流失：數十億個事實被塞進固定數量的參數，稀少的細節因此變得模糊。是流暢處理常見主題的來源，也是在不常見主題上產生捏造的根源。與[情境知識](#contextual-knowledge)（Contextual Knowledge）相對。
 
-*使用範例：*
+*情境例句：*
 
 「它寫的 React 無懈可擊，但對我們內部 SDK 的方法卻亂說一通。」
+"It writes flawless React but invents methods on our internal SDK."
 
 「React 在參數化知識（Parametric Knowledge）裡密度很高——有數百萬個訓練範例。你們的 SDK 沒有，所以模型填入看起來合理的形狀。把 SDK 文件載入[脈絡](#context)裡。」
+"React is dense in the parametric knowledge — millions of training examples. Your SDK isn't, so the model fills in plausible-looking shapes. Load the SDK docs into [context](#context)."
 
 ### Knowledge cutoff
 
 [模型](#model)不具備[參數化知識](#parametric-knowledge)（Parametric Knowledge）的日期。截止日期之後的函式庫、API 和事件，除非以[情境知識](#contextual-knowledge)的形式載入文件，否則都是捏造的溫床。每次模型發布都有各自的截止日期。
 
-*使用範例：*
+*情境例句：*
 
 「它一直寫 v3 SDK 的語法——我們用的是 v5。」
+"It keeps writing the v3 SDK syntax — we're on v5."
 
 「v5 是在知識截止日期之後才發布的。把 v5 的 changelog 作為情境知識載入，否則它會繼續根據舊的參數化版本捏造語法。」
+"v5 shipped after the knowledge cutoff. Load the v5 changelog as contextual knowledge, otherwise it'll keep fabricating from the older parametric version."
 
 ### Contextual knowledge
 
@@ -495,51 +565,61 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「工作記憶體」——情境知識是當下在視窗裡的內容；[記憶系統](#memory-system)（Memory System）則是將跨工作階段的內容帶入其中的機制。兩者的尺度不同，不能混淆。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼我貼了 API 文件它就能對，不貼就亂說？」
+"Why does it nail the API when I paste the docs and fabricate it when I don't?"
 
 「貼了文件後，它讀的是情境知識——像在翻書查答案。沒貼的時候依賴的是參數化知識，那些少見的端點就會模糊。」
+"With the docs in, it's contextual knowledge — reading off the page. Without, it's parametric and the rare endpoints blur."
 
 ### Attention relationship
 
 在預測每個[詞元](#token)時，[模型](#model)會將[脈絡](#context)中所有其他詞元都納入考量——有些影響深遠，有些幾乎微不足道。兩個詞元之間的配對關係即為**注意力關係**（Attention Relationship），有意義的配對（例如「她」與「Sarah」，或一個 `getUser()` 呼叫與其 `function getUser` 定義）彼此的影響遠大於無關聯的配對。一個包含 N 個詞元的脈絡，大約有 N² 個注意力關係。
 
-*使用範例：*
+*情境例句：*
 
 「它一直在 diff 裡搞混那兩個 `user` 符號——聽起來像是進了[混沌區](#smart-zone)。」
+"It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](#smart-zone)."
 
 「對，每個呼叫端與其宣告之間的注意力關係互相干擾——相同的詞元形狀，但綁定的對象不同。把其中一個改名，配對關係就會變得清晰。」
+"Yeah, the attention relationship between each call site and its declaration is fighting the other one — same token shape, different bindings. Rename one and the pairings sharpen."
 
 ### Attention budget
 
 每個[詞元](#token)（Token）能分配給其餘[脈絡](#context)（Context）的影響力是有限的。對[某個關係](#attention-relationship)（Attention Relationship）施加大量影響，留給其他關係的就越少。這個預算是每個詞元固定的，不會隨脈絡擴大而增長，這正是為何[工作階段](#session)越長，效果越稀薄。
 
-*使用範例：*
+*情境例句：*
 
 「它為什麼一直忽略我貼在最上面的 Schema？」
+"Why does it keep ignoring the schema I pasted at the top?"
 
 「我們已深入[混沌區](#smart-zone)了——每個詞元的注意力預算是固定的，但脈絡不斷增長。Schema 的訊號現在必須跟幾千個新詞元競爭。」
+"We're well into the [dumb zone](#smart-zone) — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
 
 ### Attention degradation
 
 隨著[工作階段](#session)不斷增長，每個[詞元](#token)的[注意力預算](#attention-budget)（Attention Budget）必須分配給更多的競爭者。任何一個[有意義關係](#attention-relationship)（Attention Relationship）上的訊號都會減弱；不相關的[脈絡](#context)雜訊大量湧入。同樣的[模型](#model)、同樣的[參數](#parameters)——只是要從同一個盤子上餵食的嘴巴多了。這是清晰區與[混沌區效應](#smart-zone)的根本成因。
 
-*使用範例：*
+*情境例句：*
 
 「它深陷混沌區了——憑空捏造出型別檔裡根本不存在的泛型。」
+"It's deep in the dumb zone — inventing generics that aren't in the type file."
 
 「注意力衰退（Attention Degradation）。型別定義仍在脈絡中，但它的訊號被我們後來加入的所有內容淹沒了。[清除](#clearing)並重新載入。」
+"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. [Clear](#clearing) and reload."
 
 ### Smart zone
 
 [工作階段](#session)剛開始時，[代理人](#agent)處於「清晰區」（Smart Zone）——思維敏銳、專注、召回能力良好。隨著工作階段增長，它逐漸漂入「混沌區」（Dumb Zone）：更粗心、更健忘、更多錯誤——且更多**忠實性[幻覺](#hallucination)**。同樣的[模型](#model)、同樣的[駕馭](#harness)——只是[脈絡](#context)變多了。這是[注意力衰退](#attention-degradation)的直觀感受。工作階段膨脹時應[清除](#clearing)或[壓縮摘要](#compaction)，不要硬撐。
 
-*使用範例：*
+*情境例句：*
 
 「前三個元件做得完美，第四個直接毀了。」
+"It nailed the first three components and just butchered the fourth."
 
 「你已出了清晰區——同樣的模型，只是深入混沌區了。壓縮摘要並重新載入計劃，下一個元件就會順利。」
+"You're out of the smart zone — same model, just deep into the dumb zone now. Compact and reload the plan, the next component will land."
 
 ## Section 5 — 交接
 
@@ -547,71 +627,85 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 結束當前[工作階段](#session)並啟動一個全新的工作階段。下一則訊息從空白的工作階段和空白的[上下文視窗](#context-window)重新開始。通常由使用者主動觸發。
 
-*使用範例：*
+*情境例句：*
 
 「它陷入迴圈，一直在那個失敗的測試上打轉。」
+"It's stuck looping on the failing test."
 
 「直接清除——帶著計劃文件和測試檔案重開一個新工作階段。繼續跟既有的[脈絡](#context)纏鬥毫無意義。」
+"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing [context](#context)."
 
 ### Handoff
 
 將[代理人](#agent)的[脈絡](#context)從一個[工作階段](#session)轉移到另一個，且沒有返回路徑。傳遞方式各異——可以是書面的[交接文件](#handoff-artifact)（Handoff Artifact）、記憶體內的摘要（[壓縮摘要](#compaction)），或其他方式。與[清除](#clearing)（Clearing）不同——清除不進行任何轉移。進行交接的原因多樣：切換角色（規劃者→實作者）、啟動 [AFK](#afk) 執行、分散到並行工作階段，或釋放[上下文視窗](#context-window)空間。
 
-*使用範例：*
+*情境例句：*
 
 「規劃工作階段越來越沉重——我應該繼續撐下去嗎？」
+"Planning session is getting heavy — should I just keep going?"
 
 「做一次交接。把決策寫進文件，清除工作階段，然後在新的工作階段中讀取那份文件來開始實作。」
+"Do a handoff. Write the decisions to a doc, clear, start the implementation in a fresh session reading from it."
 
 ### Handoff artifact
 
 一份作為[交接](#handoff)（Handoff）傳遞機制的文件——由一個[工作階段](#session)撰寫，供另一個工作階段讀取。這是多種傳遞方式之一（另見**壓縮摘要**，[Compaction](#compaction)）。
 
-*使用範例：*
+*情境例句：*
 
 「如何在規劃代理人和實作代理人之間分工？」
+"How do I split this between the planning [agent](#agent) and the implementing one?"
 
 「讓規劃者寫一份交接文件——記錄檔案路徑、決策和約束條件。實作者的工作階段從指向該文件的指針開始，以它作為任務簡報。」
+"Have the planner write a handoff artifact — file paths, decisions, constraints. The implementer's session opens with a pointer to the artifact and works from it as its brief."
 
 ### Spec
 
 一份描述跨多個[工作階段](#session)工作的[交接文件](#handoff-artifact)（Handoff Artifact）——記錄正在構建的是什麼，而非每個工作階段如何完成各自的份額。隨著工作進展而演進。由[任務單](#ticket)（Tickets）組成。
 
-*使用範例：*
+*情境例句：*
 
 「這些應該全放在一個工作階段裡嗎？」
+"Should this all be one session?"
 
 「不，把它整理成規格書——拆分成任務單，每張任務單用獨立的工作階段跑。試圖在單一[脈絡](#context)裡完成整件事，還沒跑到一半就會碰到[混沌區](#smart-zone)。」
+"No, write it up as a spec — break it into tickets, run each one in its own session. Trying to do the whole thing in a single [context](#context) will hit the [dumb zone](#smart-zone) before you're halfway."
 
 ### Ticket
 
 一份劃定單一[工作階段](#session)工作範圍的[交接文件](#handoff-artifact)（Handoff Artifact）。可以獨立存在，也可以作為[規格書](#spec)（Spec）的子項之一。任務單可以阻塞或被同層任務單阻塞，因此工作順序從它們的相依關係圖中自然浮現，而非依賴線性計劃。
 
-*使用範例：*
+*情境例句：*
 
 「這次遷移的規格書要從哪裡開始？」
+"Where do I start on the migration spec?"
 
 「看任務單圖——Schema 變更阻塞回填，回填阻塞 API 切換。挑一個沒有前置依賴的葉節點，然後跑一個工作階段處理它。」
+"Look at the ticket graph — the schema change blocks the backfill, the backfill blocks the API switch. Pick a leaf and run a session on it."
 
 ### Compaction
 
 一種在記憶體中進行的[交接](#handoff)（Handoff）：將前一個[工作階段](#session)的歷史記錄摘要化，作為新工作階段的起點。有損耗——以細節換取空間餘裕。可由使用者手動觸發，也可[自動觸發](#autocompact)。
 
-*使用範例：*
+*情境例句：*
 
 「[脈絡](#context)越來越重，我還有測試要完成。」
+"[Context](#context)'s getting heavy and I still have the test pass to do."
 
 「先壓縮摘要再開始——把關鍵內容寫進摘要提示詞，讓新工作階段保留 Schema 決策、捨棄探索過程的雜訊。」
+"Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."
 
 ### Autocompact
 
 由[駕馭](#harness)（Harness）在[上下文視窗](#context-window)接近填滿時自動觸發的[壓縮摘要](#compaction)（Compaction）。
 
-*使用範例：*
+*情境例句：*
 
 「它似乎不記得我們早些時候對 Schema 做的決定了。」
+"It doesn't seem to remember what we decided about the schema earlier."
 
 「自動壓縮摘要（Autocompact）在[對話輪次](#turn)之間觸發了——早期的決定被摘要化，可能有些細節遺失了。重新載入計劃文件，或者下次手動壓縮，這樣你才能控制哪些內容被保留。」
+"Autocompact fired between [turns](#turn) — the early decisions got summarised and we must have lost something. Reload the plan doc, or compact manually next time so you control what gets kept."
 
 ## Section 6 — 記憶與引導
 
@@ -619,11 +713,13 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 一套試圖讓[代理人](#agent)能夠跨[工作階段](#session)[保有狀態](#stateful)（Stateful）的系統。在工作階段進行中將資訊持久化到[環境](#environment)，並在未來工作階段開始時重新載入[上下文視窗](#context-window)，使代理人在使用者[清除](#clearing)工作階段後仍能維持連續性。
 
-*使用範例：*
+*情境例句：*
 
 「我每次都要重新告訴它我用的是 Postgres，不是 MySQL。」
+"I keep having to re-tell it I'm on Postgres, not MySQL."
 
 「接上記憶系統——在第一個[對話輪次](#turn)把它學到的內容寫入[檔案系統](#filesystem)，並在工作階段開始時重新載入。[模型](#model)本身是[無狀態的](#stateless)；記憶層模擬了持續性。」
+"Wire up a memory system — write what it learns to the [filesystem](#filesystem) on the first [turn](#turn), reload it at session start. The [model](#model) itself is [stateless](#stateless); the memory layer fakes continuity."
 
 ### AGENTS.md
 
@@ -631,21 +727,25 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：* 將 AGENTS.md 用於應[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的內容——放在 AGENTS.md 裡的任何內容，每個[對話輪次](#turn)（Turn）都要付出[詞元](#token)（Token）代價。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼每個工作階段一開始就已燒掉 4000 個詞元了？」
+"Why is every session starting with 4k tokens already burned?"
 
 「看看 AGENTS.md——有人把整份樣式指南直接貼在裡面，而不是把它放在[技能](#skill)（Skill）後面按需載入。」
+"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](#skill)."
 
 ### Progressive disclosure
 
 只將[代理人](#agent)當下需要的[脈絡](#context)載入，並以指標指向其餘內容。借鑒自 UI 設計。
 
-*使用範例：*
+*情境例句：*
 
 「我應該把整份樣式指南塞進 [AGENTS.md](#agentsmd) 嗎？」
+"Should I dump the entire style guide into [AGENTS.md](#agentsmd)?"
 
 「不——漸進式揭露（Progressive Disclosure）。把樣式指南作為一個[技能](#skill)（Skill）來引用，讓代理人在真正需要寫元件時才載入它。AGENTS.md 每個[對話輪次](#turn)都要付出[詞元](#token)代價。」
+"No — progressive disclosure. Reference the style guide as a [skill](#skill) the agent loads when it actually needs to write a component. AGENTS.md pays the [token](#token) cost every [turn](#turn)."
 
 ### Skill
 
@@ -653,21 +753,25 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「[工具](#tool)」——工具是代理人*呼叫*的東西；技能（Skill）是代理人*讀取*的指令。
 
-*使用範例：*
+*情境例句：*
 
 「部署操作手冊要放哪裡？」
+"Where should I put the deploy runbook?"
 
 「作為一個技能——代理人只在任務涉及部署時才載入它。放在 [AGENTS.md](#agentsmd) 裡，每個[對話輪次](#turn)就要為一個每週只用一次的東西消耗[詞元](#token)。」
+"As a skill — the agent loads it only when the task involves deploys. In [AGENTS.md](#agentsmd) it'd burn [tokens](#token) on every [turn](#turn) for something we use weekly."
 
 ### Subagent
 
 由另一個代理人透過[工具呼叫](#tool-call)（Tool Call）生成的[代理人](#agent)。在自己的[工作階段](#session)中、帶著自己的[上下文視窗](#context-window)運行，並回傳單一[工具結果](#tool-result)。與[交接](#handoff)（Handoff）不同——父代理人明確期待一個返回結果；交接則沒有返回路徑。**無法再生成子代理人**——這個樹結構只有一層深。子代理人的存在是為了隔離[脈絡](#context)，而非構建層級結構。
 
-*使用範例：*
+*情境例句：*
 
 「grep 結果把我的脈絡撐爆了。」
+"The grep results are blowing out my context."
 
 「生成一個子代理人（Subagent）來做搜尋——它用自己的上下文視窗消耗那些雜訊，再把你真正需要的兩個檔案路徑回報給你。」
+"Spawn a subagent to do the search — it'll burn its own context window on the noise and report back the two file paths you actually need."
 
 ## Section 7 — 工作模式
 
@@ -675,11 +779,13 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 一種工作模式，一或多位人類在[工作階段](#session)進行中全程與[代理人](#agent)搭檔——即時審查、重新導向或協作。人類全程在場且主動參與，而不只是針對個別操作把關。
 
-*使用範例：*
+*情境例句：*
 
 「要讓這個任務 [AFK](#afk) 跑一夜嗎？」
+"Run this [AFK](#afk) overnight?"
 
 「不，這是 Schema 遷移——保持人在迴圈（Human-in-the-loop）。我想看到每個步驟，如果它選錯了要回填的欄位，我要能即時介入調整。」
+"No, schema migration — keep it human-in-the-loop. I want to see each step and steer if it picks the wrong column to backfill from."
 
 ### AFK
 
@@ -687,13 +793,16 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「背景代理人」——這個說法以機器為中心（「在背景執行」），而非以人的行為模式為中心（「使用者已離開」）。AFK 的核心事實是：使用者不在監看。
 
-*使用範例：*
+*情境例句：*
 
 「我要讓這個工作 AFK 執行——三個沙盒化的代理人負責重構，早上再來審查 PR。」
+"I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
 
 「要[繞過權限](#agent-mode)嗎？」
+"[Bypass permissions](#agent-mode)?"
 
 「對，唯讀[檔案系統](#filesystem)，不連外網。」
+"Yeah, read-only [filesystem](#filesystem), no network."
 
 ### Automated check
 
@@ -701,15 +810,19 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「回饋迴路」、「反壓」——這兩個詞把自動化檢查和[審查](#automated-review)混為一談。*避免使用：*「測試」——測試是自動化檢查的一種，但並非所有自動化檢查都是測試。
 
-*使用範例：*
+*情境例句：*
 
 「代理人在 [AFK](#afk) 執行時一直交出有問題的程式碼。」
+"The agent keeps shipping broken code in the [AFK](#afk) runs."
 
 「[沙盒](#sandbox)裡接了哪些自動化檢查？」
+"What automated checks are wired into the [sandbox](#sandbox)?"
 
 「只有單元測試。」
+"Just the unit tests."
 
 「加上型別檢查和靜態分析——它在 PR 送出之前就能自行從這些結果修正。」
+"Add typecheck and lint — it'll self-correct from those before the PR ever lands."
 
 ### Automated review
 
@@ -717,11 +830,13 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「AI 審查」、「代理人審查」——過於模糊，無法與執行工作的代理人本身區分。
 
-*使用範例：*
+*情境例句：*
 
 「[AFK](#afk) 執行產出了太多劣質 PR。」
+"We're getting too many bad PRs from the [AFK](#afk) runs."
 
 「在合併前加一個自動化審查步驟——使用不同模型、獨立的系統提示詞，範圍鎖定在安全性和介面合約的變更。」
+"Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."
 
 ### Human review
 
@@ -729,13 +844,16 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*單獨說「程式碼審查」——這個說法含糊，無法區分是人工審查還是[自動化審查](#automated-review)。
 
-*使用範例：*
+*情境例句：*
 
 「我人工審查了 [AFK](#afk) 的輸出。」
+"I human-reviewed the [AFK](#afk) output."
 
 「你讀了 diff 還是只看摘要？」
+"You read the diff or just the summary?"
 
 「讀了 diff。摘要說它刪除了死碼——結果那個函式是從一個生成的檔案裡呼叫的。」
+"Diff. The summary said it deleted dead code — turned out the function was called from a generated file."
 
 ### Vibe coding
 
@@ -743,31 +861,38 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 *避免使用：*「氛圍程式設計」作為「低品質 AI Coding」的代名詞——這個術語描述的是審查立場，而非所產生的程式碼品質。
 
-*使用範例：*
+*情境例句：*
 
 「你有讀它在認證流程裡改了什麼嗎？」
+"Did you read what it changed in the auth flow?"
 
 「氛圍程式設計（Vibe Coding）了——登入還能用，我就只確認這個。」
+"Vibe coded it — login still works, that's all I checked."
 
 「推送之前把 diff 讀一遍，在認證上氛圍程式設計是 secrets 洩漏進 log 的方式。」
+"Read the diff before you push, vibing on auth is how secrets leak into logs."
 
 ### Design concept
 
 使用者與[代理人](#agent)之間對於正在構建的事物所共同持有的理解，存在於雙方之間，但獨立於任何具體產出物之外。Brooks 的術語（出自《The Design of Design》）：對話、[交接文件](#handoff-artifact)（Handoff Artifacts）和程式碼，都是試圖捕捉或觸及設計概念的產出物，但它們都*不等同於*設計概念本身。設計概念的品質，可從建立它的對話品質中感受出來。
 
-*使用範例：*
+*情境例句：*
 
 「它寫出了我要求的東西，但還是寫錯了。」
+"It's writing exactly what I asked for and it's still wrong."
 
 「你們還沒有建立共同的設計概念——它在用假設填補空白。在你讓它寫[規格書](#spec)之前，先持續對話，直到取消、退款和部分履行的邊界情況都在你們之間對齊為止。」
+"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a [spec](#spec)."
 
 ### Grilling
 
 一種與[代理人](#agent)共同發展[設計概念](#design-concept)（Design Concept）的技術：由代理人以蘇格拉底式的方式訪談使用者，每次針對一個決策，並為每個決策提出一個建議答案。這個方式刻意放慢直奔最終計劃的衝動——在概念穩定之前，不撰寫任何[交接文件](#handoff-artifact)（Handoff Artifact）。
 
-*使用範例：*
+*情境例句：*
 
 「它直接去寫[規格書](#spec)，結果把取消邏輯搞錯了。」
+"It went straight to writing the [spec](#spec) and got the cancellation logic wrong."
 
 「先問答引導（Grilling）它——讓它在提交任何文字之前先問你關於部分取消、退款和時序的問題。在對話中釐清比在程式碼中修正要便宜得多。」
+"Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."
 

@@ -2,10 +2,13 @@
 
 *避免使用：*單獨說「程式碼審查」——這個說法含糊，無法區分是人工審查還是[自動化審查](./Automated%20review.md)。
 
-*使用範例：*
+*情境例句：*
 
 「我人工審查了 [AFK](./AFK.md) 的輸出。」
+"I human-reviewed the [AFK](./AFK.md) output."
 
 「你讀了 diff 還是只看摘要？」
+"You read the diff or just the summary?"
 
 「讀了 diff。摘要說它刪除了死碼——結果那個函式是從一個生成的檔案裡呼叫的。」
+"Diff. The summary said it deleted dead code — turned out the function was called from a generated file."

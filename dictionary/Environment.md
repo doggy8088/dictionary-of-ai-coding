@@ -2,8 +2,10 @@
 
 *避免使用：*「環境」來指稱執行時期或駕馭本身——駕馭是外殼，環境是工作空間。
 
-*使用範例：*
+*情境例句：*
 
 「代理人看不到 staging 資料庫的 Schema。」
+"The agent can't see the staging DB schema."
 
 「把它接入環境——給它一個只對 staging 具唯讀權限的 `psql` [工具](./Tool.md)。駕馭沒問題，只是它沒有任何東西可以作用。」
+"Wire it into the environment — give it a `psql` [tool](./Tool.md) scoped to read-only on staging. The harness is fine, it just has nothing to act on."

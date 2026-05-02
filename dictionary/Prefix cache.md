@@ -2,8 +2,10 @@
 
 任何改變前綴的操作（重新排列檔案順序、在[工作階段](./Session.md)中途改寫系統提示詞、在頂部注入時間戳記）都會從該點起使快取失效，之後的請求以全額[輸入詞元](./Input%20tokens.md)費率計費。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼帳單在工作階段中途突然飆高？」
+"Why did the bill spike halfway through the session?"
 
 「[駕馭](./Harness.md)開始在每個[對話輪次](./Turn.md)把當前時間注入系統提示詞。前綴快取在第一個改變的詞元處就失效了，所以此後每次請求都以全額費率計費。」
+"[Harness](./Harness.md) started injecting the current time into the system prompt every [turn](./Turn.md). Prefix cache breaks at the first changed token, so every request after that billed at full rate."

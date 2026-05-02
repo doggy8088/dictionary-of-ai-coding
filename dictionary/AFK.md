@@ -7,10 +7,13 @@ aliases:
 
 *避免使用：*「背景代理人」——這個說法以機器為中心（「在背景執行」），而非以人的行為模式為中心（「使用者已離開」）。AFK 的核心事實是：使用者不在監看。
 
-*使用範例：*
+*情境例句：*
 
 「我要讓這個工作 AFK 執行——三個沙盒化的代理人負責重構，早上再來審查 PR。」
+"I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
 
 「要[繞過權限](./Agent%20mode.md)嗎？」
+"[Bypass permissions](./Agent%20mode.md)?"
 
 「對，唯讀[檔案系統](./Filesystem.md)，不連外網。」
+"Yeah, read-only [filesystem](./Filesystem.md), no network."

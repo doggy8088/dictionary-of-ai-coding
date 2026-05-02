@@ -2,8 +2,10 @@
 
 *避免使用：*「字詞」——詞元邊界與字詞邊界並不吻合，而每秒詞元數 / 每美元詞元數才是真正重要的計量單位。
 
-*使用範例：*
+*情境例句：*
 
 「這個提示詞會有多大？」
+"How big is this prompt going to be?"
 
 「用 tokenizer 跑一下——Schema 本身很緊湊，但 JSON 的鍵名很怪，所以會拆分成比你預期更多的詞元。」
+"Run it through the tokenizer — the schema's compact but the JSON keys are weird, so they'll split into more tokens than you think."

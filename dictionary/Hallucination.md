@@ -5,12 +5,16 @@
 
 *避免使用：*「幻覺」作為「錯誤」的代名詞——不指明是哪種類型，這個詞就沒有任何診斷價值。
 
-*使用範例：*
+*情境例句：*
 
 「它幻覺出了 Schema 上一個 `parseAsync` 方法。」
+"It hallucinated a `parseAsync` method on the schema."
 
 「是事實性還是忠實性幻覺？」
+"Factuality or faithfulness?"
 
 「那個方法在我貼的文件裡有——它只是在第四十個[對話輪次](./Turn.md)後停止讀那份文件了。」
+"The method exists in the docs I pasted — it just stopped reading them after [turn](./Turn.md) forty."
 
 「那就是忠實性幻覺。壓縮摘要並重新載入，不用再加更多文件了。」
+"Faithfulness then. Compact and reload, don't bother adding more docs."

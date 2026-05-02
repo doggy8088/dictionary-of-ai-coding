@@ -2,10 +2,13 @@
 
 *避免使用：*「氛圍程式設計」作為「低品質 AI Coding」的代名詞——這個術語描述的是審查立場，而非所產生的程式碼品質。
 
-*使用範例：*
+*情境例句：*
 
 「你有讀它在認證流程裡改了什麼嗎？」
+"Did you read what it changed in the auth flow?"
 
 「氛圍程式設計（Vibe Coding）了——登入還能用，我就只確認這個。」
+"Vibe coded it — login still works, that's all I checked."
 
 「推送之前把 diff 讀一遍，在認證上氛圍程式設計是 secrets 洩漏進 log 的方式。」
+"Read the diff before you push, vibing on auth is how secrets leak into logs."

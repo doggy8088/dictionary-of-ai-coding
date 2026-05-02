@@ -2,8 +2,10 @@
 
 *避免使用：* 將 AGENTS.md 用於應[漸進式揭露](./Progressive%20disclosure.md)（Progressive Disclosure）的內容——放在 AGENTS.md 裡的任何內容，每個[對話輪次](./Turn.md)（Turn）都要付出[詞元](./Token.md)（Token）代價。
 
-*使用範例：*
+*情境例句：*
 
 「為什麼每個工作階段一開始就已燒掉 4000 個詞元了？」
+"Why is every session starting with 4k tokens already burned?"
 
 「看看 AGENTS.md——有人把整份樣式指南直接貼在裡面，而不是把它放在[技能](./Skill.md)（Skill）後面按需載入。」
+"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](./Skill.md)."
