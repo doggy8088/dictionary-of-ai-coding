@@ -2,6 +2,13 @@ title: AI Coding 術語辭典
 description: AI Coding 的詞彙，用清晰的語言翻譯給你。
 lang: zh-TW
 
+kramdown:
+  smart_quotes:
+    - apos
+    - apos
+    - quot
+    - quot
+
 defaults:
   - scope:
       path: ""
