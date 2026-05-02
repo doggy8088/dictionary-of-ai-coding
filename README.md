@@ -33,6 +33,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 - [Inference](#inference)
 - [Token](#token)
 - [Next-token prediction](#next-token-prediction)
+- [Non-determinism](#non-determinism)
 - [Model provider](#model-provider)
 - [Harness](#harness)
 - [Model provider request](#model-provider-request)
@@ -73,8 +74,9 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 </details>
 
 <details markdown="1">
-<summary>Section 4 — 幻覺及其成因</summary>
+<summary>Section 4 — 失敗模式</summary>
 
+- [Sycophancy](#sycophancy)
 - [Hallucination](#hallucination)
 - [Parametric knowledge](#parametric-knowledge)
 - [Knowledge cutoff](#knowledge-cutoff)
@@ -199,6 +201,24 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 「它不是『決定』——一路到底都是下一個詞元預測（Next-Token Prediction）。工具呼叫不過是[駕馭](#harness)從輸出串流中解析出來的一個結構化字串。」
 "It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](#harness) parses out of the output stream."
+
+### Non-determinism
+
+同樣的輸入可能產生不同的輸出。用完全相同的[脈絡](#context)跑同一個[模型](#model)兩次，你可能會得到兩個不同答案——有時只差一個字，有時是完全不同的做法。你的程式碼不需要有任何改變，這件事也可能發生。
+
+這是模型產生文字的方式，以及[模型供應商](#model-provider)如何處理[請求](#model-provider-request)的特性。沒有哪個設定可以一鍵把它消掉。
+
+你應該預期[代理](#agent)在同一個任務上會產生一段結果分布。有些日子模型看起來很敏銳；有些日子它像是完全抓不到重點。同一個任務，不同次擲骰。
+
+小心不要過度替這件事編故事。人類是會尋找模式的機器，一連串糟糕的執行結果，很容易讓人覺得「模型這週是不是變差了」。通常，那只是分布而已。
+
+*情境例句：*
+
+「Claude 今天爛透了。他們是不是發了一個更差的版本？」
+"Claude has been awful today. Did they ship a worse version?"
+
+「大概不是——模型輸出是非決定性的。同一個任務本來就會有好日子和壞日子。先明天再試一次，再開始找原因。」
+"Probably not — model output is non-deterministic. You're going to have good days and bad days on the same task. Try again tomorrow before you go looking for a cause."
 
 ### Model provider
 
@@ -508,7 +528,32 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 「把它放進沙盒（Sandbox）——全新容器、不掛載任何憑證、不開外網。最壞的情況是它毀掉自己的檔案系統，然後你丟棄那個容器就好了。」
 "Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."
 
-## Section 4 — 幻覺及其成因
+## Section 4 — 失敗模式
+
+### Sycophancy
+
+充滿自信地附和你的[模型](#model)輸出。成因來自[訓練](#training)：模型被塑造成偏好人類喜歡的答案，而人類通常比起被告知自己錯了，更喜歡聽到對方同意自己。因此模型學會了「同意會得到獎勵」——即使這個同意是錯的。
+
+*常見表現：*
+
+- *被質疑就讓步*——當你說「你確定嗎？」時，它會推翻原本正確的答案。
+- *稱讚糟糕的輸入*——還沒分析，就先同意你破綻百出的計畫很棒。
+- *帶偏見的框架*——當你暗示是你寫的，審查就偏正面；當你暗示是別人寫的，審查就偏負面。同一個成品，不同的判決。
+- *模仿*——把你的錯誤重複回給你，當作確認。
+
+*診斷測試：*如果沒有你的引導，模型還會這樣說嗎？如果唯一改變的是你的語氣或框架，那就是諂媚，不是真的分析改變。
+
+*修復方式：*隱藏你的偏好。用中性方式下提示詞——說「審查這段程式碼」，不要說「這段程式碼好嗎？」。
+
+*避免使用：*把「諂媚」用在任何剛好討你喜歡的錯誤答案上。沒有診斷測試，這個詞就和「錯了」一樣沒有價值。
+
+*情境例句：*
+
+「它說我的重構計畫看起來很棒，然後我問『你確定嗎？』，它就把整個計畫收回去了。」
+"It said my refactor plan looked great, then I asked 'are you sure?' and it walked the whole thing back."
+
+「典型的諂媚——它一開始同意，是因為你聽起來很有把握；後來退縮，是因為你聽起來在懷疑。計畫品質沒有變，變的是你的語氣。[清除](#clearing)後，用不暗示任何立場的方式重新提問。」
+"Classic sycophancy — it agreed first because you sounded confident, then caved because you sounded doubtful. The plan's quality didn't change, your tone did. [Clear](#clearing) and re-ask without signalling either way."
 
 ### Hallucination
 

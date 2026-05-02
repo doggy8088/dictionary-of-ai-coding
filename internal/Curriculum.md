@@ -6,6 +6,7 @@
 - Inference
 - Token
 - Next-token prediction
+- Non-determinism
 - Model provider
 - Harness
 - Model provider request
@@ -37,8 +38,9 @@
 - Agent mode
 - Sandbox
 
-## Section 4 — 幻覺及其成因
+## Section 4 — 失敗模式
 
+- Sycophancy
 - Hallucination
 - Parametric knowledge
 - Knowledge cutoff
