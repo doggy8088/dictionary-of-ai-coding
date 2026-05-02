@@ -24,7 +24,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 ## 目錄
 
-<details>
+<details markdown="1">
 <summary>Section 1 — 模型</summary>
 
 - [Model](#model)
@@ -43,7 +43,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 2 — 工作階段、上下文視窗與對話輪次</summary>
 
 - [Stateless](#stateless)
@@ -57,7 +57,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 3 — 工具與環境</summary>
 
 - [Environment](#environment)
@@ -72,7 +72,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 4 — 幻覺及其成因</summary>
 
 - [Hallucination](#hallucination)
@@ -86,7 +86,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 5 — 交接</summary>
 
 - [Clearing](#clearing)
@@ -99,7 +99,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 6 — 記憶與引導</summary>
 
 - [Memory system](#memory-system)
@@ -110,7 +110,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>Section 7 — 工作模式</summary>
 
 - [Human-in-the-loop](#human-in-the-loop)
@@ -770,3 +770,4 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 「它直接去寫[規格書](#spec)，結果把取消邏輯搞錯了。」
 
 「先問答引導（Grilling）它——讓它在提交任何文字之前先問你關於部分取消、退款和時序的問題。在對話中釐清比在程式碼中修正要便宜得多。」
+

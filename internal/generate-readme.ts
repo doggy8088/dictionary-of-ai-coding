@@ -120,7 +120,7 @@ function main(): void {
         .map((t) => `- [${t}](#${headingSlug(t)})`)
         .join("\n");
       return [
-        "<details>",
+        '<details markdown="1">',
         `<summary>${s.heading}</summary>`,
         "",
         terms,
