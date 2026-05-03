@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="dark">
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,22 +12,10 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body>
-    <script>
-      (function () {
-        var savedTheme = localStorage.getItem("theme");
-        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
-      })();
-    </script>
-
     <div class="page-shell">
       <header class="site-hero" aria-label="Site introduction">
         <div class="hero-top">
           <div class="hero-kicker">Dictionary of AI Coding</div>
-          <button class="theme-toggle" type="button" aria-label="切換深色與淺色主題" aria-pressed="false">
-            <span class="theme-toggle__icon" aria-hidden="true"></span>
-            <span class="theme-toggle__label">切換主題</span>
-          </button>
         </div>
         <div class="hero-grid">
           <div class="hero-content">
@@ -47,26 +35,5 @@
         {{ content }}
       </main>
     </div>
-
-    <script>
-      (function () {
-        var button = document.querySelector(".theme-toggle");
-        var label = document.querySelector(".theme-toggle__label");
-
-        function applyTheme(theme) {
-          document.documentElement.dataset.theme = theme;
-          localStorage.setItem("theme", theme);
-          button.setAttribute("aria-pressed", String(theme === "dark"));
-          label.textContent = theme === "dark" ? "深色模式" : "淺色模式";
-        }
-
-        applyTheme(document.documentElement.dataset.theme || "light");
-
-        button.addEventListener("click", function () {
-          var nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-          applyTheme(nextTheme);
-        });
-      })();
-    </script>
   </body>
 </html>
