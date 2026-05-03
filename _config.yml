@@ -1,6 +1,8 @@
 title: AI Coding 術語辭典
 description: AI Coding 的詞彙，用清晰的語言翻譯給你。
 lang: zh-TW
+url: https://ai-dict.gh.miniasp.com
+image: /assets/images/og-image.png
 
 kramdown:
   smart_quotes:
