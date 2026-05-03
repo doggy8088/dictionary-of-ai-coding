@@ -1070,3 +1070,13 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 >
 > "Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."
 
+
+---
+
+<footer>
+
+**Repo：** [doggy8088/dictionary-of-ai-coding](https://github.com/doggy8088/dictionary-of-ai-coding)  
+**Credit：** [Matt Pocock](https://github.com/mattpocock)  
+**翻譯者：** Will 保哥
+
+</footer>
