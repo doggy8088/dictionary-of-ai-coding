@@ -261,6 +261,34 @@ summary:focus-visible {
   backdrop-filter: blur(18px);
 }
 
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: clamp(18px, 3vw, 30px) auto 0;
+  padding: 1rem clamp(0.35rem, 1vw, 0.75rem) 0.2rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer a {
+  color: var(--accent-strong);
+}
+
+.footer-repo {
+  font-weight: 800;
+}
+
+.footer-credits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem 1rem;
+}
+
 .content-card > h1:first-child {
   display: none;
 }
@@ -422,6 +450,15 @@ blockquote p + p {
 
   .content-card details ul {
     columns: 1;
+  }
+
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-credits {
+    justify-content: flex-start;
   }
 }
 

@@ -21,13 +21,3 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 <!-- TOC -->
 
 <!-- CURRICULUM -->
-
----
-
-<footer>
-
-**Repo：** [doggy8088/dictionary-of-ai-coding](https://github.com/doggy8088/dictionary-of-ai-coding)  
-**Credit：** [Matt Pocock](https://github.com/mattpocock)  
-**翻譯者：** Will 保哥
-
-</footer>
