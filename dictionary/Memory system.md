@@ -1,6 +1,10 @@
+---
+description: "試圖讓代理人跨工作階段保持狀態的系統，會持久化到環境並在工作階段開始時重新載入。"
+---
+
 一套試圖讓[代理人](./Agent.md)能夠跨[工作階段](./Session.md)[保有狀態](./Stateful.md)（Stateful）的系統。在工作階段進行中將資訊持久化到[環境](./Environment.md)，並在未來工作階段開始時重新載入[上下文視窗](./Context%20window.md)，使代理人在使用者[清除](./Clearing.md)工作階段後仍能維持連續性。
 
-*情境例句：*
+_情境例句：_
 
 「我每次都要重新告訴它我用的是 Postgres，不是 MySQL。」
 "I keep having to re-tell it I'm on Postgres, not MySQL."

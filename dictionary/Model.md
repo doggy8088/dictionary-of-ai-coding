@@ -1,6 +1,10 @@
+---
+description: "參數本身；無狀態，只做下一個詞元預測，無法單靠自己完成代理式工作。"
+---
+
 即[參數](./Parameters.md)（Parameters）本身。[無狀態](./Stateless.md)（Stateless）——執行[下一個詞元預測](./Next-token%20prediction.md)，僅此而已。「Claude Opus 4.7」和「GPT-5」都是模型。模型本身無法做任何代理人該做的事；它必須被[駕馭化](./Harness.md)（Harnessed）。
 
-*情境例句：*
+_情境例句：_
 
 「規劃步驟要不要把模型從 Sonnet 換成 Opus？」
 "Should we switch the model from Sonnet to Opus for the planning step?"

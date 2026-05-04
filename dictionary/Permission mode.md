@@ -1,6 +1,10 @@
+---
+description: "代理人模式中負責權限控管的部分，決定哪些工具呼叫要請求權限、哪些可自動執行。"
+---
+
 [代理人模式](./Agent%20mode.md)（Agent Mode）中負責權限把關的切片——哪些[工具呼叫](./Tool%20call.md)會觸發[權限請求](./Permission%20request.md)（Permission Request），哪些會自動執行。這是模式系統的原始用途，後來[駕馭](./Harness.md)才開始在其上捆綁行為指令。
 
-*情境例句：*
+_情境例句：_
 
 「它每次 grep 都暫停——[AFK](./AFK.md) 執行完全被卡死了。」
 "It paused on every grep — totally killed the [AFK](./AFK.md) run."

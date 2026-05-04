@@ -1,6 +1,10 @@
+---
+description: "駕馭在每次模型供應商請求中送出的詞元；計費通常低於輸出詞元。"
+---
+
 [駕馭](./Harness.md)（Harness）在每次[模型供應商請求](./Model%20provider%20request.md)時發送的[詞元](./Token.md)。計費費率低於[輸出詞元](./Output%20tokens.md)（Output Tokens）。
 
-*情境例句：*
+_情境例句：_
 
 「帳單很高，但[代理人](./Agent.md)寫出的內容很少。」
 "Bill's high but the [agent](./Agent.md)'s barely writing anything."

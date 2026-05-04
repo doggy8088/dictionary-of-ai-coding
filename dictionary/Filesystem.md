@@ -1,6 +1,10 @@
+---
+description: "由檔案與目錄構成的樹，代理人可在其中讀取、寫入與執行；是 coding agent 的預設環境。"
+---
+
 [代理人](./Agent.md)讀取、寫入、並在其中執行程式的檔案與目錄樹——coding agent 預設的[環境](./Environment.md)類型。[AGENTS.md](./AGENTS.md.md)、[技能](./Skill.md)（Skills）、原始碼、建置腳本和[工具](./Tool.md)配置，全都存放在檔案系統中。當一個[駕馭](./Harness.md)「從你的專案啟動」時，它就是在將代理人指向一個檔案系統。
 
-*情境例句：*
+_情境例句：_
 
 「它為什麼沒有讀到我的 AGENTS.md？」
 "Why isn't it picking up my AGENTS.md?"

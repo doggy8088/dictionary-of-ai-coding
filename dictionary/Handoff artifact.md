@@ -1,6 +1,10 @@
+---
+description: "用來承載交接的文件；由一個工作階段寫下，供另一個工作階段讀取。"
+---
+
 一份作為[交接](./Handoff.md)（Handoff）傳遞機制的文件——由一個[工作階段](./Session.md)撰寫，供另一個工作階段讀取。這是多種傳遞方式之一（另見**壓縮摘要**，[Compaction](./Compaction.md)）。
 
-*情境例句：*
+_情境例句：_
 
 「如何在規劃代理人和實作代理人之間分工？」
 "How do I split this between the planning [agent](./Agent.md) and the implementing one?"
