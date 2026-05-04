@@ -1,6 +1,10 @@
+---
+description: "描述多工作階段工作的交接產物；說明要建造什麼，而不是每個工作階段如何執行；由 ticket 組成。"
+---
+
 一份描述跨多個[工作階段](./Session.md)工作的[交接文件](./Handoff%20artifact.md)（Handoff Artifact）——記錄正在構建的是什麼，而非每個工作階段如何完成各自的份額。隨著工作進展而演進。由[任務單](./Ticket.md)（Tickets）組成。
 
-*情境例句：*
+_情境例句：_
 
 「這些應該全放在一個工作階段裡嗎？」
 "Should this all be one session?"

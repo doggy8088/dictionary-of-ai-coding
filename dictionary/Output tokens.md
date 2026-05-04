@@ -1,6 +1,10 @@
+---
+description: "模型回傳產生的詞元；因為生成成本更高，計費通常高於輸入詞元。"
+---
+
 [模型](./Model.md)產生回傳的[詞元](./Token.md)。計費費率高於[輸入詞元](./Input%20tokens.md)，因為產生輸出需要更多運算。
 
-*情境例句：*
+_情境例句：_
 
 「這次重構[工作階段](./Session.md)燒信用額度燒得很兇，明明輸入很小。」
 "The refactor [session](./Session.md) is burning through credit even though the inputs are small."

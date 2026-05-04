@@ -1,6 +1,10 @@
+---
+description: "界定單一工作階段工作範圍的交接產物；可獨立存在或掛在 spec 下，也可阻擋或被同層 ticket 阻擋。"
+---
+
 一份劃定單一[工作階段](./Session.md)工作範圍的[交接文件](./Handoff%20artifact.md)（Handoff Artifact）。可以獨立存在，也可以作為[規格書](./Spec.md)（Spec）的子項之一。任務單可以阻塞或被同層任務單阻塞，因此工作順序從它們的相依關係圖中自然浮現，而非依賴線性計劃。
 
-*情境例句：*
+_情境例句：_
 
 「這次遷移的規格書要從哪裡開始？」
 "Where do I start on the migration spec?"

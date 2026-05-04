@@ -1,6 +1,10 @@
+---
+description: "提供模型推論的東西；通常是遠端服務，也可以是本機執行環境。"
+---
+
 為[模型](./Model.md)提供[推論](./Inference.md)（Inference）服務的機構。通常是遠端服務（Anthropic、OpenAI、Google），但也可以是本地部署——在自己機器上執行的 Ollama、LM Studio、llama.cpp。[駕馭](./Harness.md)自身不執行模型；它向供應商發出請求。
 
-*情境例句：*
+_情境例句：_
 
 「我們能為這個隔離網路的客戶離線執行嗎？」
 "Can we run this offline for the air-gapped client?"

@@ -1,6 +1,10 @@
+---
+description: "在記憶體內完成的交接：前一個工作階段的歷史被摘要並用來啟動新工作階段；會以細節換取空間。"
+---
+
 一種在記憶體中進行的[交接](./Handoff.md)（Handoff）：將前一個[工作階段](./Session.md)的歷史記錄摘要化，作為新工作階段的起點。有損耗——以細節換取空間餘裕。可由使用者手動觸發，也可[自動觸發](./Autocompact.md)。
 
-*情境例句：*
+_情境例句：_
 
 「[脈絡](./Context.md)越來越重，我還有測試要完成。」
 "[Context](./Context.md)'s getting heavy and I still have the test pass to do."

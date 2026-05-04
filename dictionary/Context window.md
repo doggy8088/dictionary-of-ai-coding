@@ -1,8 +1,12 @@
+---
+description: "模型在每次模型供應商請求中看到的一切；有限、依模型而異，也是模型感知世界的唯一表面。"
+---
+
 模型在每次[模型供應商請求](./Model%20provider%20request.md)（Model Provider Request）中所能看到的全部內容。容量有限、因模型而異，且是*模型感知任何事物的唯一介面*。
 
-*避免使用：*「記憶體」——上下文視窗是工作狀態，不會跨[工作階段](./Session.md)持久保存。[記憶體](./Memory%20system.md)（Memory）是一個獨立概念，架構在其上層。
+_避免使用：_「記憶體」——上下文視窗是工作狀態，不會跨[工作階段](./Session.md)持久保存。[記憶體](./Memory%20system.md)（Memory）是一個獨立概念，架構在其上層。
 
-*情境例句：*
+_情境例句：_
 
 「我可以把整個 monorepo 貼到提示詞裡嗎？」
 "Can I just paste the whole monorepo into the prompt?"

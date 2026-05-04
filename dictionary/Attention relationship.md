@@ -1,6 +1,10 @@
+---
+description: "兩個詞元之間的配對；有意義的配對比無關配對更會互相影響。N 個詞元約有 N² 個這種關係。"
+---
+
 在預測每個[詞元](./Token.md)時，[模型](./Model.md)會將[脈絡](./Context.md)中所有其他詞元都納入考量——有些影響深遠，有些幾乎微不足道。兩個詞元之間的配對關係即為**注意力關係**（Attention Relationship），有意義的配對（例如「她」與「Sarah」，或一個 `getUser()` 呼叫與其 `function getUser` 定義）彼此的影響遠大於無關聯的配對。一個包含 N 個詞元的脈絡，大約有 N² 個注意力關係。
 
-*情境例句：*
+_情境例句：_
 
 「它一直在 diff 裡搞混那兩個 `user` 符號——聽起來像是進了[混沌區](./Smart%20zone.md)。」
 "It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](./Smart%20zone.md)."
