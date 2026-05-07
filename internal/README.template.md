@@ -1,3 +1,13 @@
+<p>
+  <a href="https://www.aihero.dev/ai-coding-dictionary">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-dark_2x.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-light_2x.png">
+      <img alt="AI Coding 術語辭典" src="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-light_2x.png" width="369">
+    </picture>
+  </a>
+</p>
+
 # AI Coding 術語辭典
 
 **AI Coding 常常讓人覺得只有內行人才懂**。一堆沒有解釋的術語。莫名其妙的失敗。帳單金額與實際工作量對不上。

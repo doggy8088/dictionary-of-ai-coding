@@ -1,10 +1,10 @@
 ---
-description: "以單元封裝的可教能力，包含某個任務的指令與資源，只有相關時才載入脈絡。"
+description: "以單元封裝的可教能力，平時留在環境中，待脈絡指標在需要時拉入上下文視窗。"
 ---
 
-一種可訓練的能力單元——針對某一項任務做好所需的指令和資源，存放在[環境](./Environment.md)中，只在相關時才載入[上下文視窗](./Context%20window.md)。這是[駕馭](./Harness.md)中實現[漸進式揭露](./Progressive%20disclosure.md)（Progressive Disclosure）的基本單位。
+一種可訓練的能力單元——針對某一項任務整理好的指令和資源，存放在[環境](./Environment.md)中，直到[脈絡指標](./Context%20pointer.md)在任務需要時把它拉進[上下文視窗](./Context%20window.md)。這是[駕馭](./Harness.md)中實現[漸進式揭露](./Progressive%20disclosure.md)的基本單位。
 
-_避免使用：_「[工具](./Tool.md)」——工具是代理人*呼叫*的東西；技能（Skill）是代理人*讀取*的指令。
+_避免使用：_「[工具](./Tool.md)」——工具是[代理人](./Agent.md)*呼叫*的東西；技能（Skill）是它*讀取*的指令。
 
 _情境例句：_
 
