@@ -4,6 +4,16 @@
   Regenerate: npm run generate
 -->
 
+<p>
+  <a href="https://www.aihero.dev/ai-coding-dictionary">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-dark_2x.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-light_2x.png">
+      <img alt="AI Coding 術語辭典" src="https://res.cloudinary.com/total-typescript/image/upload/v1777878285/dictionary-light_2x.png" width="369">
+    </picture>
+  </a>
+</p>
+
 # AI Coding 術語辭典
 
 **AI Coding 常常讓人覺得只有內行人才懂**。一堆沒有解釋的術語。莫名其妙的失敗。帳單金額與實際工作量對不上。
@@ -108,6 +118,7 @@ AI Coding 的基本術語，一個下午就能學完。掌握了這些術語，�
 - [Memory system](#memory-system)
 - [AGENTS.md](#agentsmd)
 - [Progressive disclosure](#progressive-disclosure)
+- [Context pointer](#context-pointer)
 - [Skill](#skill)
 - [Subagent](#subagent)
 
@@ -899,7 +910,7 @@ _情境例句：_
 
 ### Progressive disclosure
 
-只將[代理人](#agent)當下需要的[脈絡](#context)載入，並以指標指向其餘內容。借鑒自 UI 設計。
+只載入[代理人](#agent)當下需要的[脈絡](#context)，其餘則用[脈絡指標](#context-pointer)連向。借鑒自 UI 設計。
 
 _情境例句：_
 
@@ -911,11 +922,27 @@ _情境例句：_
 >
 > "No — progressive disclosure. Reference the style guide as a [skill](#skill) the agent loads when it actually needs to write a component. AGENTS.md pays the [token](#token) cost every [turn](#turn)."
 
+### Context pointer
+
+文件中指向另一份文件的一個提及，讓[代理人](#agent)只在任務需要時，才把它拉進[上下文視窗](#context-window)。這是構成[漸進式揭露](#progressive-disclosure)的基本單位。
+
+_避免使用：_「參照」——太平淡，無法表達跟著它走就會把更多脈絡帶進來。「傳送門」——又太浮誇。
+
+_情境例句：_
+
+> 「AGENTS.md 越來越肥了。」
+>
+> "AGENTS.md is getting huge."
+
+> 「裡面大多數都應該改成脈絡指標，而不是直接塞內容。永遠要生效的規則就直接寫在裡面；部署操作手冊和樣式指南改做成[技能](#skill)，留下脈絡指標就好。」
+>
+> "Most of it should be context pointers, not content. Keep the always-on rules inline; turn the deploy runbook and the style guide into [skills](#skill) and leave a context pointer behind."
+
 ### Skill
 
-一種可訓練的能力單元——針對某一項任務做好所需的指令和資源，存放在[環境](#environment)中，只在相關時才載入[上下文視窗](#context-window)。這是[駕馭](#harness)中實現[漸進式揭露](#progressive-disclosure)（Progressive Disclosure）的基本單位。
+一種可訓練的能力單元——針對某一項任務整理好的指令和資源，存放在[環境](#environment)中，直到[脈絡指標](#context-pointer)在任務需要時把它拉進[上下文視窗](#context-window)。這是[駕馭](#harness)中實現[漸進式揭露](#progressive-disclosure)的基本單位。
 
-_避免使用：_「[工具](#tool)」——工具是代理人*呼叫*的東西；技能（Skill）是代理人*讀取*的指令。
+_避免使用：_「[工具](#tool)」——工具是[代理人](#agent)*呼叫*的東西；技能（Skill）是它*讀取*的指令。
 
 _情境例句：_
 
@@ -959,9 +986,9 @@ _情境例句：_
 
 ### AFK
 
-一種工作模式，使用者啟動一個[工作階段](#session)後便離開，讓[代理人](#agent)（Agent）無人監督地獨立執行。這是 AI Coding 的吞吐量倍增器——在你睡覺、吃飯或處理其他事情時，可以同時並行執行多個 AFK 工作階段。通常需要寬鬆的[權限模式](#permission-mode)（Permission Mode）搭配[沙盒](#sandbox)（Sandbox）機制才能安全運作。
+離開鍵盤（Away from keyboard）。一種工作模式：使用者啟動一個[工作階段](#session)後便離開，讓[代理人](#agent)在無人監督下持續執行。這是 AI Coding 的吞吐量倍增器——在你睡覺、吃飯或處理其他事情時，可以同時並行執行多個 AFK 工作階段。通常需要寬鬆的[權限模式](#permission-mode)搭配[沙盒](#sandbox)機制才能安全運作。
 
-_避免使用：_「背景代理人」——這個說法以機器為中心（「在背景執行」），而非以人的行為模式為中心（「使用者已離開」）。AFK 的核心事實是：使用者不在監看。
+_避免使用：_「背景代理人」——這個說法以機器為中心（「在背景執行」），而非以人的行為模式為中心（「使用者已離開」）。AFK 的關鍵事實是：使用者沒有在看。
 
 _情境例句：_
 
